@@ -4,33 +4,826 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>VIP Progress</title>
-    <link rel="stylesheet" href="styles/banner.css" />
+    <style>
+      /* --------- Fonts --------- */
+      @font-face {
+        font-family: "AvertaStd";
+        src: url("../fonts/AvertaStd-Regular.ttf") format("truetype");
+        font-weight: 400;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "AvertaStd";
+        src: url("../fonts/AvertaStd-Light.ttf") format("truetype");
+        font-weight: 300;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "AvertaStd";
+        src: url("../fonts/AvertaStd-Bold.ttf") format("truetype");
+        font-weight: 700;
+        font-style: normal;
+      }
+
+      /* --------- Base --------- */
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+      }
+      body {
+        font-family: "AvertaStd", system-ui, -apple-system, Segoe UI, Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        background: #f4f4f4;
+        min-height: 100vh;
+        padding: 12px;
+      }
+
+      /* --------- VIP Card --------- */
+      .card {
+        display: flex;
+        flex-direction: column;
+        max-width: 420px;
+        width: 100%;
+        margin: 0 auto;
+        gap: 8px;
+      }
+
+      .card .level-up-btn {
+        position: static;
+        right: auto;
+        top: auto;
+        width: 100%;
+        align-self: flex-end;
+        margin: 0;
+        transform: none;
+        margin-top: 8px;
+      }
+
+      .vip-card {
+        position: relative;
+        width: 100%;
+        max-width: 420px;
+        border-radius: 14px;
+        padding: 14px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background: linear-gradient(to bottom right, #b8b8b8, #ffffff);
+        box-shadow: 0 6px 22px rgba(0, 0, 0, 0.1);
+      }
+
+      .level-up-btn {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        padding: 12px 12px;
+        font-size: 12px;
+        font-weight: 700;
+        background: #ffffff;
+        color: #1e7f49;
+        border: 1px solid #1e7f49;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+      .level-up-btn:hover {
+        background: #1e7f49;
+        color: #ffffff;
+      }
+      .level-up-btn:active {
+        transform: translateY(1px);
+      }
+
+      .vip-icon img {
+        width: 80px;
+        height: auto;
+        object-fit: contain;
+      }
+
+      .vip-details {
+        flex: 1;
+        min-width: 0;
+      }
+      .vip-level {
+        font-size: 22px;
+        line-height: 1.1;
+        font-weight: 800;
+        color: #0f172a;
+        margin: 2px 0 10px;
+      }
+
+      .xp-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #6b7280;
+        font-size: 12px;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      .progress-bar {
+        position: relative;
+        width: 100%;
+        height: 12px;
+        border-radius: 999px;
+        background: #e6eaed;
+        box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.06);
+        overflow: hidden;
+      }
+      .progress {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 0%;
+        border-right: 1px solid rgba(0, 0, 0, 0.08);
+        background: linear-gradient(180deg, #ffffff, #f3f7fa);
+        transition: width 0.35s ease;
+      }
+
+      /* --------- Modal/Full Screen Page --------- */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #f8fafc;
+        z-index: 1000;
+        display: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .modal-overlay.active {
+        display: block;
+        opacity: 1;
+      }
+
+      .modal-content {
+        height: 100vh;
+        overflow-y: auto;
+        padding: 0;
+      }
+
+      .modal-header {
+        background: #ffffff;
+        padding: 16px 20px;
+        border-bottom: 1px solid #e2e8f0;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .modal-top-content {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .modal-paragraph {
+        margin-top: -12px;
+      }
+
+      .back-button {
+        background: none;
+        border: none;
+        font-size: 18px;
+        cursor: pointer;
+        color: #64748b;
+        padding: 12px;
+        padding-left: 16px;
+        padding-right: 16px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.2s ease;
+      }
+
+      .back-button:hover {
+        background: #f1f5f9;
+      }
+
+      .modal-title {
+        width: 100%;
+        font-size: 20px;
+        font-weight: 700;
+        color: #0f172a;
+        text-align: center;
+        margin: 0;
+      }
+
+      /* --------- VIP Tier Sections --------- */
+      .vip-tiers {
+        padding: 8px;
+      }
+
+      .tier-section {
+        margin-bottom: 8px;
+        background: #ffffff;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .ribbon {
+        /* size & notch control */
+        --w: 40px; /* width */
+        --h: 24px; /* height */
+        --cut: 12px; /* notch depth */
+
+        width: var(--w);
+        height: var(--h);
+        background: #b7765d; /* ribbon color */
+        border-radius: 2px;
+        display: inline-block;
+
+        /* right-side inward notch */
+        clip-path: polygon(
+          0 0,
+          100% 0,
+          calc(100% - var(--cut)) 50%,
+          100% 100%,
+          0 100%
+        );
+      }
+
+      .silver {
+        /* size & notch control */
+        --w: 40px; /* width */
+        --h: 24px; /* height */
+        --cut: 12px; /* notch depth */
+
+        width: var(--w);
+        height: var(--h);
+        background: silver; /* ribbon color */
+        border-radius: 2px;
+        display: inline-block;
+
+        /* right-side inward notch */
+        clip-path: polygon(
+          0 0,
+          100% 0,
+          calc(100% - var(--cut)) 50%,
+          100% 100%,
+          0 100%
+        );
+      }
+
+      .tier-header {
+        padding: 20px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        transition: background-color 0.2s ease;
+      }
+
+      .tier-header:hover {
+        background: #f8fafc;
+      }
+
+      .tier-header.expanded {
+        background: #f1f5f9;
+        border-bottom: 1px solid #e2e8f0;
+      }
+
+      .tier-info {
+        flex: 1;
+      }
+
+      .tier-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: #0f172a;
+        margin: 0 0 4px 0;
+      }
+
+      .tier-range {
+        font-size: 14px;
+        color: #64748b;
+        font-weight: 500;
+      }
+
+      .tier-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        font-weight: 700;
+        margin-right: 12px;
+      }
+
+      /* Tier Colors */
+      .bronze .tier-icon {
+        background: linear-gradient(135deg, #cd7f32, #a0522d);
+        color: white;
+      }
+      .silver .tier-icon {
+        background: linear-gradient(135deg, #c0c0c0, #808080);
+        color: white;
+      }
+      .gold .tier-icon {
+        background: linear-gradient(135deg, #ffd700, #ffb347);
+        color: #333;
+      }
+      .platinum .tier-icon {
+        background: linear-gradient(135deg, #e5e4e2, #b8860b);
+        color: white;
+      }
+      .diamond .tier-icon {
+        background: linear-gradient(135deg, #b9f2ff, #00bfff);
+        color: #333;
+      }
+      .master .tier-icon {
+        background: linear-gradient(135deg, #8a2be2, #4b0082);
+        color: white;
+      }
+      .grandmaster .tier-icon {
+        background: linear-gradient(135deg, #ff1493, #dc143c);
+        color: white;
+      }
+      .challenger .tier-icon {
+        background: linear-gradient(135deg, #ff4500, #ff6347);
+        color: white;
+      }
+
+      .expand-arrow {
+        font-size: 16px;
+        color: #64748b;
+        transition: transform 0.3s ease;
+      }
+
+      .tier-header.expanded .expand-arrow {
+        transform: rotate(180deg);
+      }
+
+      /* --------- VIP Level Details --------- */
+      .tier-levels {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+
+      .tier-levels.expanded {
+        max-height: 500px;
+      }
+
+      .level-item {
+        padding: 16px 20px;
+        border-bottom: 1px solid #f1f5f9;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .level-item:last-child {
+        border-bottom: none;
+      }
+
+      .level-info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .level-number {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        background: #f1f5f9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 14px;
+        color: #475569;
+      }
+
+      .level-img {
+        display: inline-block;
+        width: 20px;
+        height: 10px;
+      }
+
+      .level-label {
+        font-weight: 600;
+        color: #334155;
+        font-size: 16px;
+      }
+
+      .level-xp {
+        font-weight: 700;
+        color: #334155;
+        font-size: 16px;
+      }
+
+      /* --------- Responsive --------- */
+      @media (min-width: 380px) {
+        .vip-level {
+          font-size: 24px;
+        }
+      }
+
+      @media (min-width: 768px) {
+        .modal-content {
+          max-width: 600px;
+          margin: 0 auto;
+        }
+
+        .vip-tiers {
+          padding: 30px;
+        }
+      }
+    </style>
   </head>
   <body>
     <div class="card">
       <div class="vip-card">
         <div class="vip-details">
           <h2 class="vip-level">VIP 0</h2>
-
           <div class="xp-row">
             <span>0 XP</span>
             <span>1 XP</span>
           </div>
-
           <div class="progress-bar">
-            <!-- set width inline to control progress -->
             <div class="progress" style="width: 0%"></div>
           </div>
         </div>
-
         <div class="vip-icon">
           <img src="assets/icons/banner-vip.png" alt="VIP Badge" />
         </div>
       </div>
-
       <div>
-        <button class="level-up-btn">View Level Up Detail</button>
+        <button class="level-up-btn" onclick="openModal()">
+          View Level Up Detail
+        </button>
       </div>
     </div>
+
+    <!-- Modal/Full Screen Page -->
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button class="back-button" onclick="closeModal()"><</button>
+          <h2 class="modal-title">VIP Level Details</h2>
+        </div>
+
+        <div class="modal-top-content">
+          <h2 class="modal-heading">XP Calculation:</h2>
+          <p class="modal-paragraph">
+            XP for Originals, Slots, and Live Casino is based on wager and house
+            edge (max 4%); $1 wager counts 1 XP, Racing/Lottery/Trading count
+            1x, Sports count 2x.
+          </p>
+        </div>
+
+        <div class="vip-tiers">
+          <!-- Bronze Tier -->
+          <div class="tier-section bronze">
+            <div class="tier-header" onclick="toggleTier(this)">
+              <div style="display: flex; align-items: center">
+                <div class="ribbon"></div>
+                <div class="tier-info">
+                  <h3 class="tier-title">Bronze VIP 2-7</h3>
+                </div>
+              </div>
+              <span class="expand-arrow">▼</span>
+            </div>
+            <div class="tier-levels">
+              <div class="level-item">
+                <div class="level-number" style="background: none">Level</div>
+                <span class="level-label">Required XP</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-img">
+                    <img src="assets/icons/badge-bronze.png" alt="">
+                  </div> -->
+                  <span class="level-label">VIP 02</span>
+                </div>
+                <span class="level-xp">100</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number"></div> -->
+                  <span class="level-label">VIP 03</span>
+                </div>
+                <span class="level-xp">200</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">53</div> -->
+                  <span class="level-label">VIP 04</span>
+                </div>
+                <span class="level-xp">1000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">54</div> -->
+                  <span class="level-label">VIP 05</span>
+                </div>
+                <span class="level-xp">2000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <span class="level-label">VIP 06</span>
+                </div>
+                <span class="level-xp">3000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <span class="level-label">VIP 07</span>
+                </div>
+                <span class="level-xp">4000</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bronze Tier -->
+          <div class="tier-section bronze">
+            <div class="tier-header" onclick="toggleTier(this)">
+              <div style="display: flex; align-items: center">
+                <div class="silver"></div>
+                <div class="tier-info">
+                  <h3 class="tier-title">Silver VIP 8-21</h3>
+                </div>
+              </div>
+              <span class="expand-arrow">▼</span>
+            </div>
+            <div class="tier-levels">
+              <div class="level-item">
+                <div class="level-number" style="background: none">Level</div>
+                <span class="level-label">Required XP</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-img">
+                    <img src="assets/icons/badge-bronze.png" alt="">
+                  </div> -->
+                  <span class="level-label">VIP 02</span>
+                </div>
+                <span class="level-xp">100</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number"></div> -->
+                  <span class="level-label">VIP 03</span>
+                </div>
+                <span class="level-xp">200</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">53</div> -->
+                  <span class="level-label">VIP 04</span>
+                </div>
+                <span class="level-xp">1000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">54</div> -->
+                  <span class="level-label">VIP 05</span>
+                </div>
+                <span class="level-xp">2000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <span class="level-label">VIP 06</span>
+                </div>
+                <span class="level-xp">3000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <span class="level-label">VIP 07</span>
+                </div>
+                <span class="level-xp">4000</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function openModal() {
+        const modal = document.getElementById("modalOverlay");
+        modal.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal() {
+        const modal = document.getElementById("modalOverlay");
+        modal.classList.remove("active");
+        document.body.style.overflow = "auto";
+      }
+
+      function toggleTier(header) {
+        const tierSection = header.parentElement;
+        const tierLevels = tierSection.querySelector(".tier-levels");
+        const isExpanded = header.classList.contains("expanded");
+
+        // Close all other expanded tiers
+        document
+          .querySelectorAll(".tier-header.expanded")
+          .forEach((expandedHeader) => {
+            if (expandedHeader !== header) {
+              expandedHeader.classList.remove("expanded");
+              expandedHeader.parentElement
+                .querySelector(".tier-levels")
+                .classList.remove("expanded");
+            }
+          });
+
+        // Toggle current tier
+        if (isExpanded) {
+          header.classList.remove("expanded");
+          tierLevels.classList.remove("expanded");
+        } else {
+          header.classList.add("expanded");
+          tierLevels.classList.add("expanded");
+        }
+      }
+
+      // Close modal when clicking outside
+      document
+        .getElementById("modalOverlay")
+        .addEventListener("click", function (e) {
+          if (e.target === this) {
+            closeModal();
+          }
+        });
+
+      // Close modal with Escape key
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeModal();
+        }
+      });
+    </script>
   </body>
 </html>
+<!-- <div class="level-number">02</div>
+                  <span class="level-label">VIP 02</span>
+                </div>
+                <span class="level-xp">100 XP</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <div class="level-number">03</div>
+                  <span class="level-label">VIP 03</span>
+                </div>
+                <span class="level-xp">200 XP</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <div class="level-number">04</div>
+                  <span class="level-label">VIP 04</span>
+                </div>
+                <span class="level-xp">400 XP</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <div class="level-number">05</div>
+                  <span class="level-label">VIP 05</span>
+                </div>
+                <span class="level-xp">800 XP</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <div class="level-number">06</div>
+                  <span class="level-label">VIP 06</span>
+                </div>
+                <span class="level-xp">1,600 XP</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <div class="level-number">07</div>
+                  <span class="level-label">VIP 07</span>
+                </div>
+                <span class="level-xp">3,200 XP</span>
+              </div>
+            </div>
+          </div> -->
+
+<!-- Platinum Tier -->
+<!-- <div class="tier-section platinum">
+            <div class="tier-header" onclick="toggleTier(this)">
+              <div style="display: flex; align-items: center;">
+                <div class="tier-icon">💎</div>
+                <div class="tier-info">
+                  <h3 class="tier-title">Platinum VIP</h3>
+                  <p class="tier-range">Levels 38-55</p>
+                </div>
+              </div>
+              <span class="expand-arrow">▼</span>
+            </div>
+            <div class="tier-levels">
+              <div class="level-item">
+                <div class="level-info">
+                  <div class="level-number">38</div>
+                  <span class="level-label">VIP 38</span>
+                </div>
+                <span class="level-xp">6.9T XP</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <div class="level-number">39</div>
+                  <span class="level-label">VIP 39</span>
+                </div>
+                <span class="level-xp">13.7T XP</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <div class="level-number">40</div>
+                  <span class="level-label">VIP 40</span>
+                </div>
+                <span class="level-xp">27.5T XP</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <div class="level-number">41</div>
+                  <span class="level-label">VIP 41</span>
+                </div>
+                <span class="level-xp">54.9T XP</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <div class="level-number">42</div>
+                  <span class="level-label">VIP 42</span>
+                </div>
+                <span class="level-xp">109.9T XP</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <div class="level-number">43</div>
+                  <span class="level-label">VIP 43</span>
+                </div>
+                <span class="level-xp">219.7T XP</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <div class="level-number">44</div>
+                  <span class="level-label">VIP 44</span>
+                </div>
+                <span class="level-xp">439.4T XP</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <div class="level-number">45</div>
+                  <span class="level-label">VIP 45</span>
+                </div>
+                <span class="level-xp">878.9T XP</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <div class="level-number">46</div>
+                  <span class="level-label">VIP 46</span>
+                </div>
+                <span class="level-xp">1.8Q XP</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <div class="level-number">47</div>
+                  <span class="level-label">VIP 47</span>
+                </div>
+                <span class="level-xp">3.5Q XP</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <div class="level-number">48</div>
+                  <span class="level-label">VIP 48</span>
+                </div>
+                <span class="level-xp">7.0Q XP</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <div class="level-number">49</div>
+                  <span class="level-label">VIP 49</span>
+                </div>
+                <span class="level-xp">14.0Q XP</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <div class="level-number">50</div>
+                  <span class="level-label">VIP 50</span>
+                </div>
+                <span class="level-xp">28.1Q XP</span>
+              </div>
+               -->
