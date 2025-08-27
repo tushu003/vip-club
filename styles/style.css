@@ -1,25 +1,62 @@
-body{
-    background-color: rgb(244, 244, 244);
-
+/* Regular */
+@font-face {
+  font-family: "AvertaStd";
+  src: url("../fonts/AvertaStd-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
 }
 
-.card-container{
-    background-color: rgb(255, 255, 255);
-    padding: 24px;
-    border: 1px solid black;
-    position: relative;
-}
-.card-img{
-    width: 172px;
-    height: 172px;
-    position: absolute;
+/* Light */
+@font-face {
+  font-family: "AvertaStd";
+  src: url("../fonts/AvertaStd-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
 }
 
-.card-title{
-    color: black;
-    text-align: center;
+/* Bold */
+@font-face {
+  font-family: "AvertaStd";
+  src: url("../fonts/AvertaStd-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
 }
-.card-des{
-    color: rgb(23,26,26);
-    text-align: center;
+
+/* Global styles */
+body {
+  font-family: "AvertaStd", Arial, sans-serif;
+  background-color: rgb(244, 244, 244);
+  margin: 0;
+  padding: 0;
+}
+
+/* Card container */
+.card-container {
+  background-color: rgb(255, 255, 255);
+  padding: 24px;
+  border: 1px solid black;
+  position: relative;
+}
+
+/* Card image */
+.card-img {
+  width: 172px;
+  height: 172px;
+  position: absolute;
+}
+
+/* Card title */
+.card-title {
+  font-family: "AvertaStd", Arial, sans-serif;
+  font-weight: 700;
+  color: black;
+  text-align: center;
+}
+
+/* Card description */
+.card-des {
+  font-family: "AvertaStd", Arial, sans-serif;
+  font-weight: 400;
+  color: rgb(23, 26, 26);
+  text-align: center;
 }

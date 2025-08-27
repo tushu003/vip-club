@@ -2,18 +2,104 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles/style.css">
-    <title>VIP-CLUB</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VIP Club</title>
+    <link rel="stylesheet" href="/styles/vip-card.css" />
   </head>
   <body>
-    <section class="card-section">
-      <div class="card-container">
-        <div class="card">
-          <img class="card-img" src="assets/card-img-withdraw.png" alt="" />
-          <h3 class="card-title">No-Fee <br> Withdrawal</h3>
-          <p class="card-des">Reach VIP 38 for no-fee cryptocurrency <br> withdrawals.</p>
-        </div>
+    <section class="vip-cards" aria-labelledby="vip-cards__heading">
+      <div class="vip-cards__container">
+        <h2 id="vip-cards__heading" class="sr-only">VIP Club Benefits</h2>
+
+        <!-- Card 1 -->
+        <article class="vip-card">
+          <img
+            class="vip-card__image"
+            src="assets/icons/card-img-withdraw.png"
+            alt=""
+          />
+          <h3 class="vip-card__title">
+            No-Fee <br />
+            Withdrawal
+          </h3>
+          <p class="vip-card__desc">
+            Reach VIP 38 for no-fee cryptocurrency withdrawals.
+          </p>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="vip-card">
+          <img
+            class="vip-card__image"
+            src="assets/icons/card-img-spin.png"
+            alt=""
+          />
+          <h3 class="vip-card__title">
+            Rewarding <br />
+            Lucky Spin
+          </h3>
+          <p class="vip-card__desc">
+            Spin the wheel &amp; receive bigger prizes as you level up.
+          </p>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="vip-card">
+          <img
+            class="vip-card__image"
+            src="assets/icons/card-img-vip.png"
+            alt=""
+          />
+          <h3 class="vip-card__title">
+            Dedicated <br />
+            VIP Host
+          </h3>
+          <p class="vip-card__desc">
+            Selected VIPs get personalized attention from a dedicated host.
+          </p>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="vip-card">
+          <img
+            class="vip-card__image"
+            src="assets/icons/card-img-level.png"
+            alt=""
+          />
+          <h3 class="vip-card__title">
+            Amazing <br />
+            Level Up Bonus
+          </h3>
+          <p class="vip-card__desc">
+            Unlock multiple surprise rewards as you level up.
+          </p>
+        </article>
+
+        <!-- Card 5 -->
+        <article class="vip-card">
+          <img
+            class="vip-card__image"
+            src="assets/icons/card-img-tips.png"
+            alt=""
+          />
+          <h3 class="vip-card__title">Fun Tips &amp; Raining</h3>
+          <p class="vip-card__desc">
+            Tip to show appreciation or try Coin Drops to win rewards.
+          </p>
+        </article>
+
+        <!-- Card 6 -->
+        <article class="vip-card">
+          <img
+            class="vip-card__image"
+            src="assets/icons/card-img-cashback.png"
+            alt=""
+          />
+          <h3 class="vip-card__title">Exclusive Cashback</h3>
+          <p class="vip-card__desc">
+            Earn incredible cashback rewards every week &amp; month.
+          </p>
+        </article>
       </div>
     </section>
   </body>
