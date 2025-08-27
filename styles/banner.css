@@ -1,0 +1,126 @@
+@font-face {
+  font-family: "AvertaStd";
+  src: url("../fonts/AvertaStd-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Light */
+@font-face {
+  font-family: "AvertaStd";
+  src: url("../fonts/AvertaStd-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* Bold */
+@font-face {
+  font-family: "AvertaStd";
+  src: url("../fonts/AvertaStd-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Global styles */
+body {
+  font-family: "AvertaStd", Arial, sans-serif;
+  background-color: rgb(244, 244, 244);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* VIP Card */
+.vip-card {
+  background: linear-gradient(to bottom right, #b8b8b8, #ffffff);
+  border-radius: 12px;
+  padding: 16px;
+  width: 40%;
+  max-width: 400px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Icon */
+.vip-icon img {
+  width: 150px;
+  height: auto;
+  margin-bottom: 12px;
+}
+
+/* Text */
+.vip-level {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+/* Progress Bar */
+.progress-bar {
+  width: 100%;
+  background: #ddd;
+  border-radius: 20px;
+  height: 20px;
+  margin: 8px 0;
+  position: relative;
+}
+.progress {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 15px;
+  font-size: 12px;
+  column-gap: 80px;
+  height: 100%;
+  background: #3f88fc;
+  border-radius: 20px;
+  transition: width 0.3s ease;
+}
+
+/* XP Info */
+.xp-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #666;
+  margin: 6px 0;
+}
+
+.next-level {
+  font-size: 13px;
+  color: #555;
+  margin-top: 6px;
+}
+
+/* Button */
+.level-up-btn {
+  margin-top: 14px;
+  color: #34c759;
+  border: #34c759;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.level-up-btn:hover {
+  background: #28a745;
+  color: white;
+}
+
+/* Mobile Friendly */
+@media (max-width: 480px) {
+  .vip-card {
+    padding: 12px;
+  }
+  .vip-level {
+    font-size: 18px;
+  }
+  .level-up-btn {
+    font-size: 13px;
+    padding: 7px 12px;
+  }
+}

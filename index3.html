@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BC.GAME VIP - Mobile</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <!-- VIP Header Section -->
+    <div class="vip-header">
+        <div class="vip-badge">
+            <div class="vip-icon">V</div>
+        </div>
+        <div class="vip-info">
+            <h1>VIP 0</h1>
+            <div class="vip-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 0%"></div>
+                </div>
+                <span class="progress-text">100 wager VIP 1</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIP Tiers -->
+    <div class="vip-tiers">
+        <div class="tier active" data-tier="bronze">
+            <div class="tier-icon bronze"></div>
+            <span>Bronze</span>
+        </div>
+        <div class="tier" data-tier="silver">
+            <div class="tier-icon silver"></div>
+            <span>Silver</span>
+        </div>
+        <div class="tier" data-tier="gold">
+            <div class="tier-icon gold"></div>
+            <span>Gold</span>
+        </div>
+        <div class="tier" data-tier="platinum1">
+            <div class="tier-icon platinum"></div>
+            <span>Platinum I-II</span>
+        </div>
+        <div class="tier" data-tier="diamond">
+            <div class="tier-icon diamond"></div>
+            <span>Diamond I-II</span>
+        </div>
+    </div>
+
+    <!-- Exclusive VIP Bonus Section -->
+    <div class="bonus-section">
+        <h2>Exclusive VIP Bonus</h2>
+        <p>Discover the ultimate gaming experience</p>
+        
+        <div class="bonus-table">
+            <div class="bonus-row header">
+                <div class="bonus-name">Bonus Type</div>
+                <div class="tier-columns">
+                    <span>Bronze</span>
+                    <span>Silver</span>
+                    <span>Gold</span>
+                    <span>Platinum</span>
+                    <span>Diamond</span>
+                </div>
+            </div>
+            
+            <div class="bonus-row" data-bonus="racing">
+                <div class="bonus-name">
+                    <div class="bonus-icon racing"></div>
+                    <span>Racing</span>
+                </div>
+                <div class="tier-columns">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+            </div>
+
+            <div class="bonus-row" data-bonus="daily">
+                <div class="bonus-name">
+                    <div class="bonus-icon daily"></div>
+                    <span>Daily Bonus</span>
+                </div>
+                <div class="tier-columns">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+            </div>
+
+            <div class="bonus-row" data-bonus="coin">
+                <div class="bonus-name">
+                    <div class="bonus-icon coin"></div>
+                    <span>Coin Drops</span>
+                </div>
+                <div class="tier-columns">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+            </div>
+
+            <div class="bonus-row" data-bonus="tips">
+                <div class="bonus-name">
+                    <div class="bonus-icon tips"></div>
+                    <span>Tips</span>
+                </div>
+                <div class="tier-columns">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+            </div>
+
+            <div class="bonus-row" data-bonus="spin">
+                <div class="bonus-name">
+                    <div class="bonus-icon spin"></div>
+                    <span>VIP Spin</span>
+                </div>
+                <div class="tier-columns">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+            </div>
+
+            <div class="bonus-row" data-bonus="levelup">
+                <div class="bonus-name">
+                    <div class="bonus-icon levelup"></div>
+                    <span>Level-up Bonus</span>
+                </div>
+                <div class="tier-columns">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+            </div>
+
+            <div class="bonus-row" data-bonus="recharge">
+                <div class="bonus-name">
+                    <div class="bonus-icon recharge"></div>
+                    <span>Recharge</span>
+                </div>
+                <div class="tier-columns">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+            </div>
+
+            <div class="bonus-row" data-bonus="weekly">
+                <div class="bonus-name">
+                    <div class="bonus-icon weekly"></div>
+                    <span>Weekly Cashback</span>
+                </div>
+                <div class="tier-columns">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+            </div>
+
+            <div class="bonus-row" data-bonus="monthly">
+                <div class="bonus-name">
+                    <div class="bonus-icon monthly"></div>
+                    <span>Monthly Cashback</span>
+                </div>
+                <div class="tier-columns">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+            </div>
+
+            <div class="bonus-row" data-bonus="tuesday">
+                <div class="bonus-name">
+                    <div class="bonus-icon tuesday"></div>
+                    <span>Taco Tuesday</span>
+                </div>
+                <div class="tier-columns">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+            </div>
+
+            <div class="bonus-row" data-bonus="sports">
+                <div class="bonus-name">
+                    <div class="bonus-icon sports"></div>
+                    <span>Sports Weekly Cashback</span>
+                </div>
+                <div class="tier-columns">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+            </div>
+
+            <div class="bonus-row" data-bonus="nofee">
+                <div class="bonus-name">
+                    <div class="bonus-icon nofee"></div>
+                    <span>No-fee Withdrawal</span>
+                </div>
+                <div class="tier-columns">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+            </div>
+
+            <div class="bonus-row" data-bonus="exclusive">
+                <div class="bonus-name">
+                    <div class="bonus-icon exclusive"></div>
+                    <span>Exclusive SVIP Perks</span>
+                </div>
+                <div class="tier-columns">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+            </div>
+
+            <div class="bonus-row" data-bonus="luxury">
+                <div class="bonus-name">
+                    <div class="bonus-icon luxury"></div>
+                    <span>Luxury Giveaway</span>
+                </div>
+                <div class="tier-columns">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIP Benefits Cards -->
+    <div class="benefits-section">
+        <div class="benefit-card">
+            <div class="benefit-icon withdrawal"></div>
+            <h3>No-fee Withdrawal</h3>
+            <p>Reach VIP level 10 for no-fee cryptocurrency withdrawals.</p>
+        </div>
+
+        <div class="benefit-card">
+            <div class="benefit-icon lucky-spin"></div>
+            <h3>Rewarding Lucky Spin</h3>
+            <p>Spin the wheel to receive bigger prizes as you level up.</p>
+        </div>
+
+        <div class="benefit-card">
+            <div class="benefit-icon vip-host"></div>
+            <h3>Dedicated VIP Host</h3>
+            <p>Selected VIPs receive special attention from a dedicated host.</p>
+        </div>
+
+        <div class="benefit-card">
+            <div class="benefit-icon level-bonus"></div>
+            <h3>Amazing Level Up Bonus</h3>
+            <p>Unlock multiple surprise rewards as you level up.</p>
+        </div>
+
+        <div class="benefit-card">
+            <div class="benefit-icon tips-raining"></div>
+            <h3>Fun Tips & Raining</h3>
+            <p>Tip to show appreciation or try Coin Drops to spread rewards.</p>
+        </div>
+
+        <div class="benefit-card">
+            <div class="benefit-icon cashback"></div>
+            <h3>Exclusive Cashback</h3>
+            <p>Earn incredible cashback rewards every week & month.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
