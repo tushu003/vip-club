@@ -1,33 +1,24 @@
 /* ---------------------------------------
-   Fonts (as provided)
+   Fonts (Averta as provided)
 --------------------------------------- */
-
-/* Regular */
 @font-face {
   font-family: "AvertaStd";
   src: url("../fonts/AvertaStd-Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
+  font-weight: 400; font-style: normal;
 }
-
-/* Light */
 @font-face {
   font-family: "AvertaStd";
   src: url("../fonts/AvertaStd-Light.ttf") format("truetype");
-  font-weight: 300;
-  font-style: normal;
+  font-weight: 300; font-style: normal;
 }
-
-/* Bold */
 @font-face {
   font-family: "AvertaStd";
   src: url("../fonts/AvertaStd-Bold.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
+  font-weight: 700; font-style: normal;
 }
 
 /* ---------------------------------------
-   Design tokens
+   Tokens (fluid with clamp for ALL phones)
 --------------------------------------- */
 :root {
   --bg-page: 244 244 244;
@@ -35,25 +26,26 @@
   --text-strong: 0 0 0;
   --text-body: 23 26 26;
 
-  --radius-lg: 16px;
-  --shadow-card: 0 1px 2px rgba(16, 24, 40, 0.05);
-
-  /* Typography scale chosen to match screenshot proportions */
   --ff: "AvertaStd", Arial, sans-serif;
   --fw-regular: 400;
   --fw-bold: 700;
 
-  --fz-title: 22px;   /* h3 lines with manual <br> */
+  /* fluid type: 320px → 480px+ */
+  --fz-title: clamp(20px, 6.25vw, 22px);  /* ~20 at 320, caps at 22 */
   --lh-title: 1.25;
-  --fz-desc: 16px;
+  --fz-desc: clamp(14px, 4.375vw, 16px);  /* ~14 at 320, caps at 16 */
   --lh-desc: 1.6;
 
-  --gap-grid: 24px;
-  --space-card: 24px;
-  --space-top-img: 8px; /* little breathing room for image */
+  /* fluid spacing & image size */
+  --gap-grid: clamp(12px, 5vw, 20px);
+  --space-card: clamp(16px, 5vw, 24px);
+  --space-top-img: clamp(6px, 2vw, 8px);
+  --img: clamp(132px, 40vw, 172px);       /* scales on small phones, maxes at 172 */
+  --radius-lg: 16px;
+  --shadow-card: 0 1px 2px rgba(16, 24, 40, 0.05);
 }
 
-/* Accessibility helper for section heading */
+/* sr-only for hidden section heading */
 .sr-only {
   position: absolute !important;
   width: 1px; height: 1px;
@@ -66,11 +58,8 @@
    Base
 --------------------------------------- */
 * { box-sizing: border-box; }
-
-html, body {
-  height: 100%;
-}
-
+html, body { height: 100%; }
+html { -webkit-text-size-adjust: 100%; } /* iOS text zoom guard */
 body {
   margin: 0;
   font-family: var(--ff);
@@ -79,31 +68,23 @@ body {
 }
 
 /* ---------------------------------------
-   Section + Grid
+   Section – mobile only, uses full device width
 --------------------------------------- */
 .vip-cards {
-  padding: 40px 16px;
+  padding: max(24px, env(safe-area-inset-top)) 
+           max(16px, env(safe-area-inset-right)) 
+           max(24px, env(safe-area-inset-bottom)) 
+           max(16px, env(safe-area-inset-left));
+  display: flex;
+  justify-content: center;
 }
-
 .vip-cards__container {
-  max-width: 1200px;
-  margin: 0 auto;
-
-  /* Responsive grid (2/3 columns) */
+  width: 100%;
+  height: auto;
+  /* Always one column; fills any mobile width from 320px up */
   display: grid;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--gap-grid);
-}
-
-@media (min-width: 640px) {
-  .vip-cards__container {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-@media (min-width: 992px) {
-  .vip-cards__container {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
 }
 
 /* ---------------------------------------
@@ -115,52 +96,150 @@ body {
   border: 1px solid rgba(0,0,0,0.08);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card);
-  padding: calc(var(--space-card) + 172px / 2) var(--space-card) var(--space-card); /* leave space for image overlap */
+  margin-top: 20px;
+
+  /* leave room so text doesn’t collide with the top icon */
+  padding: calc(var(--space-card) + var(--img) / 2)
+           var(--space-card)
+           var(--space-card);
+
   text-align: center;
-  overflow: hidden;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+.vip-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(16, 24, 40, 0.08);
 }
 
-/* Image sits visually in upper area */
+/* Icon (fluid but capped at the original 172x172) */
 .vip-card__image {
-  width: 172px;
-  height: 172px;
+  width: 161px;
+  height: auto;
+  margin: 8px 0px;
   position: absolute;
-  left: 50%;
+  top: -46px;
   transform: translateX(-50%);
-  top: var(--space-top-img);
   pointer-events: none;
 }
 
 /* Title */
 .vip-card__title {
-  margin: 8px 0 8px;
-  font-weight: var(--fw-bold);
-  color: rgb(var(--text-strong));
-  font-size: var(--fz-title);
+  margin: 8px 0px ;
+  font-weight: bold;
+  font-size: 12px;
   line-height: var(--lh-title);
-  letter-spacing: 0;
+  color: rgb(23, 26, 26);
 }
 
 /* Description */
 .vip-card__desc {
   margin: 0;
-  font-weight: var(--fw-regular);
-  font-size: var(--fz-desc);
+  font-weight: 400;
+  font-size: 9px;
   line-height: var(--lh-desc);
-  color: rgb(var(--text-body));
+  color: rgb(95, 109, 109);
 }
 
-/* Subtle hover (keeps the same visual style, just polish) */
-.vip-card:hover {
-  transform: translateY(-2px);
-  transition: transform 160ms ease, box-shadow 160ms ease;
-  box-shadow: 0 4px 10px rgba(16, 24, 40, 0.08);
+.faq{
+  padding: max(24px, env(safe-area-inset-top)) 16px 32px;
+  display:flex; justify-content:center;
+}
+.faq__container{
+  width:100%;
+  max-width: 480px; /* looks great on all phones; also centers on desktop */
+}
+.faq__title{
+  margin:0 0 12px;
+  font-weight: bold;
+  font-size: 15px;
+  color: rgb(23, 26, 26);
 }
 
-/* Reduce motion preference */
+/* Card panel */
+.faq__panel{
+  background: rgb(var(--card-bg));
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 6px; /* inner padding around items */
+}
+
+/* ----------- Item ----------- */
+.faq-item{
+  border-radius: 12px;
+  overflow: hidden;                 /* smooth clip for open state */
+}
+
+/* ROW layout (your request): question + chevron */
+.faq-item__summary{
+  display: flex;                    /* ROW */
+  flex-direction: row;              /* explicit row */
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--gap);
+  list-style: none;
+  cursor: pointer;
+  padding: var(--panel-pad);
+  border-radius: 12px;
+  outline: none;
+}
+.faq-item__summary::-webkit-details-marker{ display:none; }
+
+/* Question text */
+.faq-item__question{
+  font-weight: 600;
+  font-size: 12px;
+  margin: 8px;
+  line-height: 17px;
+  color: rgb(23, 26, 26);
+}
+
+/* Chevron pill on the right */
+.faq-item__chevron{
+  width: var(--chev-size);
+  height: var(--chev-size);
+  min-width: var(--chev-size);
+  border-radius: 8px;
+  background: var(--chev-bg);
+  border: 1px solid var(--chev-bd);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .2s ease;
+}
+.faq-item__chevron::before{
+  content: "";
+  width: 8px; height: 8px;
+  border-right: 2px solid var(--chev-ink);
+  border-bottom: 2px solid var(--chev-ink);
+  transform: rotate(-45deg);        /* “>” chevron */
+  display:block;
+}
+
+/* Open state: rotate to point up */
+.faq-item[open] .faq-item__chevron{
+  transform: rotate(90deg);
+}
+
+/* Content */
+.faq-item__content{
+  padding: 0 var(--panel-pad) var(--panel-pad);
+}
+.faq-item__content p{
+    font-weight: 600;
+  margin: 8px;
+  font-size: 14px;
+  line-height: 20px;
+  color: rgb(95, 109, 109);
+}
+
+/* Divider between items */
+.faq-item + .faq-item{
+  border-top: 1px solid #EEF0F2;
+}
+
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .vip-card:hover {
-    transform: none;
-    box-shadow: var(--shadow-card);
-  }
+  .vip-card { transition: none; }
+  .vip-card:hover { transform: none; box-shadow: var(--shadow-card); }
 }

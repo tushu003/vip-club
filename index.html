@@ -2,7 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- cover notches/safe areas on iOS -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
     <title>VIP Club</title>
     <link rel="stylesheet" href="/styles/vip-card.css" />
   </head>
@@ -18,10 +22,7 @@
             src="assets/icons/card-img-withdraw.png"
             alt=""
           />
-          <h3 class="vip-card__title">
-            No-Fee <br />
-            Withdrawal
-          </h3>
+          <h3 class="vip-card__title">No-Fee Withdrawal</h3>
           <p class="vip-card__desc">
             Reach VIP 38 for no-fee cryptocurrency withdrawals.
           </p>
@@ -34,26 +35,20 @@
             src="assets/icons/card-img-spin.png"
             alt=""
           />
-          <h3 class="vip-card__title">
-            Rewarding <br />
-            Lucky Spin
-          </h3>
+          <h3 class="vip-card__title">Rewarding Lucky Spin</h3>
           <p class="vip-card__desc">
             Spin the wheel &amp; receive bigger prizes as you level up.
           </p>
         </article>
 
-        <!-- Card 3 -->
+        <!-- Card 3 (stray “A” removed) -->
         <article class="vip-card">
           <img
             class="vip-card__image"
             src="assets/icons/card-img-host.png"
             alt=""
           />
-          <h3 class="vip-card__title">
-            Dedicated <br />
-            VIP Host
-          </h3>
+          <h3 class="vip-card__title">Dedicated <br />VIP Host</h3>
           <p class="vip-card__desc">
             Selected VIPs get personalized attention from a dedicated host.
           </p>
@@ -66,10 +61,7 @@
             src="assets/icons/card-img-chat.png"
             alt=""
           />
-          <h3 class="vip-card__title">
-            Amazing <br />
-            Level Up Bonus
-          </h3>
+          <h3 class="vip-card__title">Amazing <br />Level Up Bonus</h3>
           <p class="vip-card__desc">
             Unlock multiple surprise rewards as you level up.
           </p>
@@ -100,6 +92,183 @@
             Earn incredible cashback rewards every week &amp; month.
           </p>
         </article>
+      </div>
+    </section>
+    <section class="faq" aria-labelledby="faq__heading">
+      <div class="faq__container">
+        <h2 id="faq__heading" class="faq__title">Frequently Asked Questions</h2>
+
+        <div class="faq__panel" role="list">
+          <!-- Item 1 (open) -->
+          <details class="faq-item" open>
+            <summary class="faq-item__summary">
+              <span class="faq-item__question">What is ‘Level-up Bonus’?</span>
+              <span class="faq-item__chevron" aria-hidden="true">></span>
+            </summary>
+            <div class="faq-item__content">
+              <p>
+                Showcasing our appreciation for players, we reward them with a
+                Level Up bonus upon reaching the next level. Once players reach
+                Level 38 and higher, we’ve boosted the level-up bonus to be
+                slightly higher than the regular level-up bonus available at
+                lower levels.
+              </p>
+            </div>
+          </details>
+
+          <!-- Item 2 -->
+          <details class="faq-item">
+            <summary class="faq-item__summary">
+              <span class="faq-item__question">What is ‘Raining’?</span>
+              <span class="faq-item__chevron" aria-hidden="true">></span>
+            </summary>
+            <div class="faq-item__content">
+              <p>
+                Engage in chat conversations throughout the day to receive free
+                coins as part of the Constant Chat Rains bonus. <br />
+                Rules: <br />
+                1.Six players level higher than 4 will be randomly selected and
+                rewarded in chat room every 6 hours. <br />
+                2. Bonus will be different according to the currencies. <br />
+                3. Players will be randomly selected by Rain algorithm. The
+                players who send more messages have the higher probability to
+                get rewarded. <br />
+                4. But even if the user has sent only one message, there is
+                still a chance that they can receive the rain bonus. <br />
+                5. Rain information will be sent to the chat room by robots.
+                <br />
+                6. Having more than one account per user is prohibited. You will
+                get the lower possibility of receiving rain and BC will suspend
+                your withdrawals for a manual review in the fraud prevention
+                system which may take up to 24 hrs. We do not guarantee withdraw
+                processing and may ban account with your balance in it. If you
+                have already had more than one account please self-surrender by
+                contacting Live Support. <br />
+              </p>
+            </div>
+          </details>
+
+          <!-- Item 3 -->
+          <details class="faq-item">
+            <summary class="faq-item__summary">
+              <span class="faq-item__question">What is ‘Coin Drop’?</span>
+              <span class="faq-item__chevron" aria-hidden="true">></span>
+            </summary>
+            <div class="faq-item__content">
+              <p>
+                If you haven’t reached VIP Level 7 and unlocked ‘Coin Drop’, you
+                need to be active and quick in order to grab the coins when it
+                happens in Public Chat. The rewards go to the fastest
+                participants. <br />
+                <br />
+                Once you have reached VIP Level 7, you may create your own ‘Coin
+                Drop’ and customize the amount and quantity of recipients before
+                you share your good luck and generosity with other players in
+                Public Chat
+              </p>
+            </div>
+          </details>
+
+          <!-- Item 4 -->
+          <details class="faq-item">
+            <summary class="faq-item__summary">
+              <span class="faq-item__question">What are ‘Tips’?</span>
+              <span class="faq-item__chevron" aria-hidden="true">></span>
+            </summary>
+            <div class="faq-item__content">
+              <p>
+                You may tip other players once you reach VIP Level 8. Tipping is
+                how you show appreciation and share your generosity with other
+                players in BC.GAME. You can decide how much you want to send to
+                the other players.
+              </p>
+            </div>
+          </details>
+
+          <!-- Item 5 -->
+          <details class="faq-item">
+            <summary class="faq-item__summary">
+              <span class="faq-item__question">What is ‘Recharge’?</span>
+              <span class="faq-item__chevron" aria-hidden="true">></span>
+            </summary>
+            <div class="faq-item__content">
+              <p>
+                ‘Recharge’ is a unique and exciting feature that rewards players
+                with split bonuses (Recharges) throughout the week based on
+                their gaming activities. Players can set different intervals to
+                claim these bonuses, providing them with an added incentive to
+                keep playing. <br />
+                <br />
+                In basic terms, ‘Recharge’ means that players receive split
+                bonuses (Recharges) throughout the week at different intervals
+                set by the player themselves. This feature not only keeps
+                players engaged but also adds an extra layer of excitement to
+                the gaming experience. <br /><br />
+                Eligibility for Recharge Activation To be eligible for Recharge
+                Activation, players must meet the following criteria: <br />
+                1. Have a VIP level of 22 and above <br />
+                2. Have wagered a minimum of $1,000 in the past 7 days (24/7)
+                <br />
+                <br />
+                Once a player meets these requirements, they can request
+                Recharge Activation. Upon activation, their Recharge will be
+                redeemable for the next 7 days.
+              </p>
+            </div>
+          </details>
+
+          <!-- Item 6 -->
+          <details class="faq-item">
+            <summary class="faq-item__summary">
+              <span class="faq-item__question">What is ‘Weekly Cashback’?</span>
+              <span class="faq-item__chevron" aria-hidden="true">></span>
+            </summary>
+            <div class="faq-item__content">
+              <p>
+                The ‘Weekly Cashback’ is an exclusive perk on our platform
+                designed for VIP 22+ players. As the name suggests, this bonus
+                is issued once a week. It is an automatic bonus paid out every
+                Friday to players at VIP level 22 and above. The size of the
+                bonus depends on how much a player has wagered during the past
+                week with a minimum wager requirement of $1000 between the
+                period Friday-Thursday. The calculation for the weekly cashback
+                remains the same, and the only difference is that it may not
+                align with your Recharge renewals.
+              </p>
+            </div>
+          </details>
+
+          <!-- Item 7 -->
+          <details class="faq-item">
+            <summary class="faq-item__summary">
+              <span class="faq-item__question"
+                >What is ‘Sports Weekly Bonus’?</span
+              >
+              <span class="faq-item__chevron" aria-hidden="true">></span>
+            </summary>
+            <div class="faq-item__content">
+              <p>
+                In addition to our existing Weekly Bonus for VIP level 22+
+                players, we are now introducing the BC Sports Club weekly bonus
+                as an additional perk for sports bettors. The new Sport bonus is
+                specific only to Sport Wager and is calculated based on the
+                player's wagering amount from Saturday to Friday, and
+                distributed automatically every Saturday. With the introduction
+                of the BC Sports Club bonuses, our VIP level 22+ players can now
+                enjoy even more rewards and a thrilling sports betting
+                experience! <br> BC Sports Club offers a range of weekend bonuses
+                based on your weekly wager amount in our Sportsbook. <br> . Wager $500
+                or more from Saturday to Friday and receive a $5 Weekend Bonus! <br>
+                . Wager $2,500 or more and receive a $30 Weekend Bonus! <br> . Wager
+                $5,000 or more and receive a $70 Weekend Bonus! <br> . Wager $10,000 or
+                more and receive a $150 Weekend Bonus! <br> These bonuses apply to
+                all markets and odds in our Sportsbook, giving you more
+                opportunities to win big! The weekly wager is calculated from
+                the previous Saturday 00:00hrs to Friday 23:59hrs (UTC).
+              </p>
+            </div>
+          </details>
+        </div>
       </div>
     </section>
   </body>

@@ -1,62 +1,111 @@
-/* Regular */
-@font-face {
-  font-family: "AvertaStd";
-  src: url("../fonts/AvertaStd-Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
+/* --- keep your @font-face blocks exactly as before --- */
+
+/* Tokens (tuned for 2-up mobile grid) */
+:root {
+  --bg-page: 244 244 244;
+  --bg-card: 255 255 255;
+  --text-strong: 0 0 0;
+  --text-body: 23 26 26;
+
+  --ff: "AvertaStd", Arial, sans-serif;
+  --fw-regular: 400;
+  --fw-bold: 700;
+
+  /* keep typography same-to-same */
+  --fz-title: clamp(20px, 6.25vw, 22px);
+  --lh-title: 1.25;
+  --fz-desc: clamp(14px, 4.375vw, 16px);
+  --lh-desc: 1.6;
+
+  /* tighter gaps for 2-up */
+  --gap-grid: clamp(12px, 4vw, 16px);
+  --space-card: clamp(14px, 4.5vw, 20px);
+  --space-top-img: clamp(6px, 2vw, 8px);
+
+  /* smaller, fluid icon so two cards fit nicely */
+  --img: clamp(100px, 30vw, 140px);
 }
 
-/* Light */
-@font-face {
-  font-family: "AvertaStd";
-  src: url("../fonts/AvertaStd-Light.ttf") format("truetype");
-  font-weight: 300;
-  font-style: normal;
-}
+/* sr-only helper stays same */
 
-/* Bold */
-@font-face {
-  font-family: "AvertaStd";
-  src: url("../fonts/AvertaStd-Bold.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-}
-
-/* Global styles */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+html { -webkit-text-size-adjust: 100%; }
 body {
-  font-family: "AvertaStd", Arial, sans-serif;
-  background-color: rgb(244, 244, 244);
   margin: 0;
-  padding: 0;
+  font-family: var(--ff);
+  background: rgb(var(--bg-page));
+  color: rgb(var(--text-body));
 }
 
-/* Card container */
-.card-container {
-  background-color: rgb(255, 255, 255);
-  padding: 24px;
-  border: 1px solid black;
+/* Section – mobile only */
+.vip-cards {
+  padding: max(24px, env(safe-area-inset-top))
+           max(12px, env(safe-area-inset-right))
+           max(24px, env(safe-area-inset-bottom))
+           max(12px, env(safe-area-inset-left));
+  display: flex;
+  justify-content: center;
+}
+
+/* ✅ Two per row on all mobile widths */
+.vip-cards__container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gap-grid);
+  align-items: stretch; /* equal heights per row */
+}
+
+/* Card */
+.vip-card {
   position: relative;
+  background: rgb(var(--bg-card));
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 16px;
+  box-shadow: 0 1px 2px rgba(16,24,40,0.05);
+  padding: calc(var(--space-card) + var(--img) / 2)
+           var(--space-card)
+           var(--space-card);
+  text-align: center;
+  overflow: hidden;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+  height: 100%;
+}
+.vip-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(16,24,40,0.08);
 }
 
-/* Card image */
-.card-img {
-  width: 172px;
-  height: 172px;
+/* Icon */
+.vip-card__image {
+  width: var(--img);
+  height: var(--img);
   position: absolute;
+  top: var(--space-top-img);
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
 }
 
-/* Card title */
-.card-title {
-  font-family: "AvertaStd", Arial, sans-serif;
-  font-weight: 700;
-  color: black;
-  text-align: center;
+/* Title & description (unchanged) */
+.vip-card__title {
+  margin: 8px 0 8px;
+  font-weight: var(--fw-bold);
+  font-size: var(--fz-title);
+  line-height: var(--lh-title);
+  color: rgb(var(--text-strong));
+}
+.vip-card__desc {
+  margin: 0;
+  font-weight: var(--fw-regular);
+  font-size: var(--fz-desc);
+  line-height: var(--lh-desc);
+  color: rgb(var(--text-body));
 }
 
-/* Card description */
-.card-des {
-  font-family: "AvertaStd", Arial, sans-serif;
-  font-weight: 400;
-  color: rgb(23, 26, 26);
-  text-align: center;
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .vip-card { transition: none; }
+  .vip-card:hover { transform: none; box-shadow: 0 1px 2px rgba(16,24,40,0.05); }
 }
