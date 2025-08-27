@@ -1,19 +1,16 @@
+/* --------- Fonts (keep your files / paths) --------- */
 @font-face {
   font-family: "AvertaStd";
   src: url("../fonts/AvertaStd-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
 }
-
-/* Light */
 @font-face {
   font-family: "AvertaStd";
   src: url("../fonts/AvertaStd-Light.ttf") format("truetype");
   font-weight: 300;
   font-style: normal;
 }
-
-/* Bold */
 @font-face {
   font-family: "AvertaStd";
   src: url("../fonts/AvertaStd-Bold.ttf") format("truetype");
@@ -21,106 +18,147 @@
   font-style: normal;
 }
 
-/* Global styles */
+/* --------- Base (mobile-first) --------- */
+* {
+  box-sizing: border-box;
+}
+html,
 body {
-  font-family: "AvertaStd", Arial, sans-serif;
-  background-color: rgb(244, 244, 244);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin: 0;
+}
+body {
+  font-family: "AvertaStd", system-ui, -apple-system, Segoe UI, Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  background: #f4f4f4;
   min-height: 100vh;
+  padding: 12px;
+  /* display: flex;
+  align-items: flex-start;
+  justify-content: center; */
 }
 
-/* VIP Card */
+/* --------- VIP Card --------- */
+/* container as the same width as card */
+.card {
+  display: flex;
+  flex-direction: column;
+  max-width: 420px;
+  width: 100%;
+  margin: 0 auto;
+  gap: 8px;
+}
+
+/* button below the card (override absolute) */
+.card .level-up-btn {
+  position: static;
+  right: auto;
+  top: auto;
+  width: 100%;
+  align-self: flex-end;
+  margin: 0;
+  transform: none;
+  margin-top: 8px;
+}
+
 .vip-card {
-  background: linear-gradient(to bottom right, #b8b8b8, #ffffff);
-  border-radius: 12px;
-  padding: 16px;
-  width: 40%;
-  max-width: 400px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 14px;
+  padding: 14px;
+  overflow: hidden;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 12px;
+
+  /* Layered gradient: top white fade + left→right silver→white + subtle corner glow */
+  /* background:
+    linear-gradient(180deg, rgba(255,255,255,.9) 0%, rgba(255,255,255,1) 80%),
+    linear-gradient(90deg, #c6c6c6 0%, #ffffff 70%),
+    radial-gradient(90% 70% at 0% 100%, rgba(255,255,255,.55) 0%, rgba(255,255,255,0) 60%); */
+  background: linear-gradient(to bottom right, #b8b8b8, #ffffff);
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.1);
 }
 
-/* Icon */
-.vip-icon img {
-  width: 150px;
+/* top-right button */
+.level-up-btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  padding: 12px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  background: #ffffff;
+  color: #1e7f49;
+  border: 1px solid #1e7f49;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.level-up-btn:active {
+  transform: translateY(1px);
+}
+
+/* icon */
+/* .vip-icon {
+  flex: 0 0 68px;
   height: auto;
-  margin-bottom: 12px;
+  display: grid;
+  place-items: center;
+} */
+.vip-icon img {
+  width: 80px;
+  height: auto;
+  object-fit: contain;
 }
 
-/* Text */
+/* details */
+.vip-details {
+  flex: 1;
+  min-width: 0;
+}
 .vip-level {
-  font-size: 32px;
-  font-weight: bold;
+  font-size: 22px;
+  line-height: 1.1;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 2px 0 10px;
+}
+
+/* xp labels row */
+.xp-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #6b7280;
+  font-size: 12px;
+  font-weight: 600;
   margin-bottom: 8px;
 }
 
-/* Progress Bar */
+/* progress */
 .progress-bar {
-  width: 100%;
-  background: #ddd;
-  border-radius: 20px;
-  height: 20px;
-  margin: 8px 0;
   position: relative;
+  width: 100%;
+  height: 12px;
+  border-radius: 999px;
+  background: #e6eaed;
+  box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
 }
 .progress {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-left: 15px;
-  font-size: 12px;
-  column-gap: 80px;
-  height: 100%;
-  background: #3f88fc;
-  border-radius: 20px;
-  transition: width 0.3s ease;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0%;
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
+  background: linear-gradient(180deg, #ffffff, #f3f7fa);
+  transition: width 0.35s ease;
 }
 
-/* XP Info */
-.xp-info {
-  display: flex;
-  justify-content: space-between;
-  font-size: 14px;
-  color: #666;
-  margin: 6px 0;
-}
-
-.next-level {
-  font-size: 13px;
-  color: #555;
-  margin-top: 6px;
-}
-
-/* Button */
-.level-up-btn {
-  margin-top: 14px;
-  color: #34c759;
-  border: #34c759;
-  padding: 8px 14px;
-  border-radius: 6px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-.level-up-btn:hover {
-  background: #28a745;
-  color: white;
-}
-
-/* Mobile Friendly */
-@media (max-width: 480px) {
-  .vip-card {
-    padding: 12px;
-  }
+/* --------- tiny bumps on bigger phones --------- */
+@media (min-width: 380px) {
   .vip-level {
-    font-size: 18px;
-  }
-  .level-up-btn {
-    font-size: 13px;
-    padding: 7px 12px;
+    font-size: 24px;
   }
 }

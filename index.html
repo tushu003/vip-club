@@ -7,24 +7,29 @@
     <link rel="stylesheet" href="styles/banner.css" />
   </head>
   <body>
-    <div class="vip-card">
-      <div class="vip-details">
-        <h2 class="vip-level">VIP 0</h2>
-        <div class="progress-bar">
-          <div class="progress" style="width:0%">
-            <span>0XP</span>
-            <span>1XP</span>
+    <div class="card">
+      <div class="vip-card">
+        <div class="vip-details">
+          <h2 class="vip-level">VIP 0</h2>
+
+          <div class="xp-row">
+            <span>0 XP</span>
+            <span>1 XP</span>
+          </div>
+
+          <div class="progress-bar">
+            <!-- set width inline to control progress -->
+            <div class="progress" style="width: 0%"></div>
           </div>
         </div>
-        <!-- <div class="xp-info">
-          <span>0 XP</span>
-          <span>1 XP</span>
-        </div> -->
-        <button class="level-up-btn">View Level Up Detail</button>
+
+        <div class="vip-icon">
+          <img src="assets/icons/banner-vip.png" alt="VIP Badge" />
+        </div>
       </div>
 
-      <div class="vip-icon">
-        <img src="assets/icons/banner-vip.png" alt="VIP Badge" />
+      <div>
+        <button class="level-up-btn">View Level Up Detail</button>
       </div>
     </div>
   </body>
