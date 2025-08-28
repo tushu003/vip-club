@@ -38,7 +38,7 @@ body {
 .card {
   display: flex;
   flex-direction: column;
-  max-width: 420px;
+  max-width: 1200px;
   width: 100%;
   margin: 0 auto;
   gap: 8px;
@@ -58,11 +58,12 @@ body {
 .banner-card {
   position: relative;
   width: 100%;
-  max-width: 420px;
+  max-width: 1200px;
   border-radius: 14px;
   padding: 14px;
   overflow: hidden;
   display: flex;
+  /* height: 200px; */
   align-items: center;
   gap: 12px;
   background: linear-gradient(to bottom right, #b8b8b8, #ffffff);
@@ -95,6 +96,15 @@ body {
   width: 80px;
   height: auto;
   object-fit: contain;
+}
+
+.vip-banner-icon img {
+  width: 100%;
+  max-width: clamp(100px, 20vw, 200px);
+
+  height: auto;
+  object-fit: contain;
+  display: block;
 }
 
 .vip-details {
@@ -527,6 +537,10 @@ body {
     font-weight: 800;
     color: rgb(23, 26, 26);
   }
+
+  .vip-banner-icon img {
+    flex-basis: clamp(80px, 24vw, 130px); /* image gets smaller */
+  }
 }
 
 @media (min-width: 768px) {
@@ -537,5 +551,9 @@ body {
 
   .vip-tiers {
     padding: 30px;
+  }
+
+  .vip-banner-icon img {
+    flex-basis: clamp(100px, 22vw, 160px);
   }
 }
