@@ -278,7 +278,7 @@
 }
 .bonus-type {
   color: var(--text-secondary);
-  font-weight: 700;
+  /* font-weight: 700; */
 }
 
 /* colors (optional accents) */
@@ -386,9 +386,9 @@
   }
 
   /* Bonus Type header */
-  .bonus-type {
-    font-size: 10px;
-  }
+  /* .bonus-type {
+    font-size: 18px;
+  } */
 }
 
   /* smaller silver navigation arrows */
@@ -406,9 +406,9 @@
   }
 
   /* Bonus Type header */
-  .bonus-type {
+  /* .bonus-type {
     font-size: 9px;
-  }
+  } */
 
 @media (max-width: 400px) {
   /* even smaller header */
@@ -477,7 +477,7 @@
   }
 
   /* Bonus Type header */
-  .bonus-type {
-    font-size: 9px;
-  }
+  /* .bonus-type {
+    font-size: 16px;
+  } */
 }
