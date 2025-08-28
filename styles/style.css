@@ -1,25 +1,173 @@
-body{
-    background-color: rgb(244, 244, 244);
-
+/* ====== Base Wrapper ====== */
+.vip-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: system-ui, sans-serif;
+  color: #102039;
+}
+.vip-container h1 {
+  font-size: 28px;
+  margin: 0 0 6px;
+}
+.vip-container .subtitle {
+  color: #5a6a85;
+  margin: 0 0 18px;
 }
 
-.card-container{
-    background-color: rgb(255, 255, 255);
-    padding: 24px;
-    border: 1px solid black;
-    position: relative;
+/* ====== Table Shell ====== */
+.vip-wrap {
+  background: #f9fbff;
+  border: 1px solid #e8eef7;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px -10px rgba(0, 0, 0, 0.15);
 }
-.card-img{
-    width: 172px;
-    height: 172px;
-    position: absolute;
+.vip-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+.vip-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+.vip-scroll::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
 }
 
-.card-title{
-    color: black;
-    text-align: center;
+/* ====== Table ====== */
+.vip-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  min-width: 100%;
+  font-size: 15px;
 }
-.card-des{
-    color: rgb(23,26,26);
-    text-align: center;
+.vip-table th,
+.vip-table td {
+  border-right: 1px solid #e8eef7;
+  padding: 12px 14px;
+  text-align: center;
+  white-space: nowrap;
+}
+.vip-table th:last-child,
+.vip-table td:last-child {
+  border-right: none;
+}
+
+/* Sticky header + first column */
+.vip-table thead th {
+  position: sticky;
+  top: 0;
+  background: #f9fbff;
+  z-index: 5;
+}
+.vip-table thead th:first-child,
+.vip-table td:first-child {
+  position: sticky;
+  left: 0;
+  background: #fff;
+  z-index: 6;
+  text-align: left;
+  box-shadow: 4px 0 6px -4px rgba(0, 0, 0, 0.15);
+}
+
+/* Bonus type cell */
+.vip-bonus-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.vip-icon {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  background: #f2f5fb;
+  border: 1px solid #e8eef7;
+  border-radius: 8px;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.vip-title {
+  font-weight: 600;
+  font-size: 15px;
+}
+.vip-sub {
+  font-size: 12px;
+  color: #5a6a85;
+}
+
+/* Colors for tiers */
+.bonus-type {
+  color: #a3adbf;
+  border-bottom: 1px solid #e8eef7;
+}
+.bronze {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+}
+.bronze img{
+    width: 20px;
+}
+/* 
+.silver {
+  color: #a3adbf;
+}
+.gold {
+  color: #f7c948;
+}
+.plat {
+  color: #7f72ff;
+}
+.dia {
+  color: #ff7ab8;
+}
+  */
+.star {
+  font-size: 18px;
+}
+.dash {
+  color: #5a6a85;
+} 
+
+.header-border{
+    background: red;
+    border-bottom: 1px solid #e8eef7;
+}
+
+/* ====== Responsive shrink ====== */
+@media (max-width: 600px) {
+  .vip-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
+  .vip-title {
+    font-size: 13px;
+  }
+  .vip-sub {
+    display: none;
+  } /* hide subtext on mobile */
+  .vip-table th,
+  .vip-table td {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+}
+@media (max-width: 400px) {
+  .vip-title {
+    font-size: 12px;
+  }
+  .vip-icon {
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+  }
+  .vip-table th,
+  .vip-table td {
+    padding: 6px 8px;
+    font-size: 12px;
+  }
 }

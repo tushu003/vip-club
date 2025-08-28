@@ -1,20 +1,836 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles/style.css">
-    <title>VIP-CLUB</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Exclusive VIP Bonus — Mobile Slider Navigation</title>
+    <style>
+      /* ========== Container ========== */
+      .vip-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 16px;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
+          Arial, "Noto Sans";
+        color: #102039;
+        background: #fff;
+      }
+      .vip-container h1 {
+        margin: 0 0 6px;
+        font-size: clamp(20px, 2.2vw + 12px, 32px);
+        letter-spacing: -0.02em;
+      }
+      .vip-container .subtitle {
+        margin: 0 0 16px;
+        color: #5a6a85;
+      }
+
+      /* ========== Shell ========== */
+      .vip-wrap {
+        background: #f9fbff;
+        border: 1px solid #e8eef7;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 8px 20px -10px rgba(0, 0, 0, 0.15);
+        position: relative;
+      }
+      .vip-scroll {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+      }
+      .vip-scroll::-webkit-scrollbar {
+        height: 8px;
+      }
+      .vip-scroll::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 999px;
+      }
+
+      /* ========== Silver Column Navigation Arrows ========== */
+      .silver-nav-arrow {
+        position: absolute;
+        top: 24px; /* Position at header level */
+        width: 20px;
+        height: 20px;
+        background: rgba(255, 255, 255, 0.95);
+        border: 1px solid #e8eef7;
+        border-radius: 50%;
+        display: none; /* Hidden by default, shown only on mobile */
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 16; /* Higher than regular nav arrows */
+        font-size: 10px;
+        color: #5a6a85;
+        transition: all 0.2s ease;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      }
+      .silver-nav-arrow:hover {
+        background: #fff;
+        color: #102039;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+      }
+      .silver-nav-arrow.disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+      }
+      .silver-nav-left {
+        left: 162px; /* Position just left of Silver column */
+      }
+      .silver-nav-right {
+        left: 242px; /* Position just right of Silver column */
+      }
+
+      /* ========== Table ========== */
+      .vip-table {
+        border-collapse: separate;
+        border-spacing: 0;
+        width: max-content;
+        min-width: 100%;
+        font-size: 15px;
+      }
+      /* desktop/base widths */
+      .vip-table th:nth-child(1),
+      .vip-table td:nth-child(1) {
+        min-width: 200px; /* Reduced from 300px */
+        max-width: 200px;
+      }
+      .vip-table th:nth-child(2),
+      .vip-table td:nth-child(2) {
+        min-width: 120px; /* Bronze column */
+        max-width: 120px;
+      }
+      .vip-table th:nth-child(n + 3),
+      .vip-table td:nth-child(n + 3) {
+        min-width: 140px;
+      }
+
+      .vip-table th,
+      .vip-table td {
+        padding: 12px 14px;
+        text-align: center;
+        background: #fff;
+        border-right: 1px solid #e8eef7;
+      }
+      .vip-table th:first-child,
+      .vip-table td:first-child {
+        white-space: normal; /* Allow text wrapping */
+        word-wrap: break-word;
+      }
+      .vip-table th:not(:first-child),
+      .vip-table td:not(:first-child) {
+        white-space: nowrap;
+      }
+      .vip-table th:last-child,
+      .vip-table td:last-child {
+        border-right: 0;
+      }
+
+      /* sticky header + first two cols */
+      .vip-table thead th {
+        position: sticky;
+        top: 0;
+        background: #f1f6ff;
+        z-index: 5;
+        border-bottom: 1px solid #e8eef7;
+      }
+      .vip-table thead th:first-child,
+      .vip-table td:first-child {
+        position: sticky;
+        left: 0;
+        background: #fff;
+        z-index: 8; /* Higher z-index for Bonus Type */
+        text-align: left;
+        box-shadow: 2px 0 8px -2px rgba(0, 0, 0, 0.15);
+      }
+      .vip-table thead th:first-child {
+        background: #f1f6ff;
+      }
+      /* Bronze column also sticky */
+      .vip-table thead th:nth-child(2) {
+        position: sticky;
+        left: 200px; /* width of first column */
+        background: #f1f6ff;
+        z-index: 7; /* Lower than Bonus Type */
+        box-shadow: 2px 0 8px -2px rgba(0, 0, 0, 0.12);
+      }
+      .vip-table td:nth-child(2) {
+        position: sticky;
+        left: 200px; /* width of first column */
+        background: #fff;
+        z-index: 6; /* Lower than Bonus Type data cells */
+        box-shadow: 2px 0 8px -2px rgba(0, 0, 0, 0.12);
+      }
+
+      .vip-table tbody tr:nth-child(even) td {
+        background: #f6f8fc;
+      }
+      .vip-table tbody tr:nth-child(even) td:first-child,
+      .vip-table tbody tr:nth-child(even) td:nth-child(2) {
+        background: #fff;
+      }
+
+      /* bottom border for tier columns (3..6) */
+      .vip-table tbody td:nth-child(n + 3) {
+        border-bottom: 1px solid #e8eef7;
+      }
+
+      /* ========== Bonus Type cell ========== */
+      .vip-bonus-cell {
+        display: grid;
+        grid-template-columns: 36px 1fr;
+        align-items: center;
+        column-gap: 8px;
+      }
+
+      .vip-icon {
+        width: 36px;
+        height: 36px;
+        aspect-ratio: 1 / 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: none;
+      }
+
+      .vip-icon img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .vip-bonus-cell > div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-width: 0;
+      }
+
+      .vip-title {
+        line-height: 1.2;
+        font-weight: 600;
+        font-size: 15px;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .vip-sub {
+        line-height: 1.1;
+        font-size: 12px;
+        color: #5a6a85;
+      }
+
+      /* ========== Tier headers (with images) ========== */
+      .vip-tier {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+      }
+      .vip-tier img {
+        width: 20px;
+        height: 20px;
+        display: block;
+      }
+      .bonus-type {
+        color: #5a6a85;
+        font-weight: 700;
+      }
+
+      /* colors (optional accents) */
+      .bronze {
+        color: #c68a51;
+      }
+      .silver {
+        color: #a3adbf;
+      }
+      .gold {
+        color: #f7c948;
+      }
+      .plat {
+        color: #7f72ff;
+      }
+      .dia {
+        color: #ff7ab8;
+      }
+      .star {
+        font-size: 18px;
+      }
+      .dash {
+        color: #5a6a85;
+      }
+
+      /* ========== Mobile: sticky Bronze + navigation ========== */
+      @media (max-width: 767px) {
+        /* show silver column navigation arrows */
+        .silver-nav-arrow {
+          display: flex;
+        }
+
+        /* Adjust silver nav positions for mobile */
+        .silver-nav-left {
+          left: 92px; /* Just left of Silver column on mobile */
+        }
+        .silver-nav-right {
+          left: 162px; /* Just right of Silver column on mobile */
+        }
+
+        /* compact header */
+        .vip-table thead th {
+          padding: 6px 4px;
+          font-size: 12px;
+          line-height: 1.2;
+        }
+        .vip-tier {
+          gap: 4px;
+        }
+        .vip-tier img {
+          width: 16px;
+          height: 16px;
+        }
+
+        /* adjust column widths for mobile */
+        .vip-table th:nth-child(1),
+        .vip-table td:nth-child(1) {
+          min-width: 100px; /* Smaller Bonus Type column */
+          max-width: 100px;
+        }
+
+        /* Bronze column sticky positioning */
+        .vip-table th:nth-child(2),
+        .vip-table td:nth-child(2) {
+          min-width: 70px;
+          max-width: 70px;
+        }
+        .vip-table thead th:nth-child(2) {
+          left: 100px; /* width of first column on mobile */
+        }
+        .vip-table td:nth-child(2) {
+          left: 100px; /* width of first column on mobile */
+        }
+
+        /* other tier columns */
+        .vip-table th:nth-child(n + 3),
+        .vip-table td:nth-child(n + 3) {
+          min-width: 75px;
+        }
+
+        /* compact first column content */
+        .vip-bonus-cell {
+          grid-template-columns: 20px 1fr;
+          gap: 6px;
+        }
+        .vip-icon {
+          width: 20px;
+          height: 20px;
+          font-size: 12px;
+          border-radius: 6px;
+        }
+        .vip-title {
+          font-size: 11px;
+          line-height: 1.2;
+          white-space: normal; /* Allow wrapping */
+        }
+        .vip-sub {
+          display: none;
+        }
+
+        /* cell padding smaller */
+        .vip-table td {
+          padding: 6px 4px;
+          font-size: 12px;
+        }
+
+        /* Bonus Type header */
+        .bonus-type {
+          font-size: 10px;
+        }
+      }
+
+      @media (max-width: 400px) {
+        /* even smaller header */
+        .vip-table thead th {
+          padding: 4px 2px;
+          font-size: 10px;
+        }
+        .vip-tier img {
+          width: 14px;
+          height: 14px;
+        }
+
+        /* tighter column widths for tiny phones */
+        .vip-table th:nth-child(1),
+        .vip-table td:nth-child(1) {
+          min-width: 85px; /* Even smaller Bonus Type column */
+          max-width: 85px;
+        }
+
+        .vip-table th:nth-child(2),
+        .vip-table td:nth-child(2) {
+          min-width: 80px;
+          max-width: 60px;
+        }
+        .vip-table thead th:nth-child(2) {
+          left: 90px;
+        }
+        .vip-table td:nth-child(2) {
+          left: 90px;
+        }
+
+        .vip-table th:nth-child(n + 3),
+        .vip-table td:nth-child(n + 3) {
+          min-width: 80px;
+        }
+
+        .vip-icon {
+          width: 18px;
+          height: 18px;
+          font-size: 10px;
+        }
+        .vip-title {
+          font-size: 10px;
+        }
+        .vip-table td {
+          padding: 5px 2px;
+          font-size: 11px;
+        }
+        .vip-bonus-cell {
+          grid-template-columns: 18px 1fr;
+          gap: 4px;
+        }
+
+        /* smaller silver navigation arrows */
+        .silver-nav-arrow {
+          width: 18px;
+          height: 18px;
+          font-size: 9px;
+          top: 5px; /* Adjust for smaller header */
+        }
+        .silver-nav-left {
+          left: 180px; /* Adjusted for smaller columns */
+        }
+        .silver-nav-right {
+          left: 250px; /* Adjusted for smaller columns */
+        }
+
+        /* Bonus Type header */
+        .bonus-type {
+          font-size: 9px;
+        }
+      }
+    </style>
   </head>
   <body>
-    <section class="card-section">
-      <div class="card-container">
-        <div class="card">
-          <img class="card-img" src="assets/card-img-withdraw.png" alt="" />
-          <h3 class="card-title">No-Fee <br> Withdrawal</h3>
-          <p class="card-des">Reach VIP 38 for no-fee cryptocurrency <br> withdrawals.</p>
+    <div class="vip-container">
+      <h1>Exclusive VIP Bonus</h1>
+      <p class="subtitle">Discover the ultimate gaming experience</p>
+
+      <div class="vip-wrap">
+        <!-- Silver Column Navigation Arrows -->
+        <button
+          class="silver-nav-arrow silver-nav-left"
+          id="silverPrevBtn"
+          onclick="navigate(-1)"
+        >
+          ‹
+        </button>
+        <button
+          class="silver-nav-arrow silver-nav-right"
+          id="silverNextBtn"
+          onclick="navigate(1)"
+        >
+          ›
+        </button>
+
+        <div class="vip-scroll" id="vipScroll">
+          <table class="vip-table">
+            <thead>
+              <tr>
+                <th class="bonus-type">Bonus Type</th>
+                <th>
+                  <div class="vip-tier">
+                    <img src="assets/badge-bronze.png" alt="Bronze badge" />
+                    <span>Bronze</span>
+                  </div>
+                </th>
+                <th>
+                  <div class="vip-tier">
+                    <img src="assets/badge-silver.png" alt="Silver badge" />
+                    <span>Silver</span>
+                  </div>
+                </th>
+                <th>
+                  <div class="vip-tier">
+                    <img src="assets/badge-gold.png" alt="Gold badge" />
+                    <span>Gold</span>
+                  </div>
+                </th>
+                <th>
+                  <div class="vip-tier">
+                    <img src="assets/badge-platinum.png" alt="Platinum badge" />
+                    <span>Platinum I–II</span>
+                  </div>
+                </th>
+                <th>
+                  <div class="vip-tier">
+                    <img src="assets/badge-diamond.png" alt="Diamond badge" />
+                    <span>Diamond I–III</span>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <!-- Raining -->
+              <tr>
+                <td>
+                  <div class="vip-bonus-cell">
+                    <span class="vip-icon">
+                      <img src="assets/icon-raining.png" alt="" />
+                    </span>
+                    <div>
+                      <div class="vip-title">Raining</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="bronze star">★</td>
+                <td class="silver star">★</td>
+                <td class="gold star">★</td>
+                <td class="plat star">★</td>
+                <td class="dia star">★</td>
+              </tr>
+
+              <!-- Daily bonus -->
+              <tr>
+                <td>
+                  <div class="vip-bonus-cell">
+                    <span class="vip-icon">
+                      <img src="assets/icon-daily.png" alt="" />
+                    </span>
+                    <div>
+                      <div class="vip-title">Daily Bonus</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="bronze star">★</td>
+                <td class="silver star">★</td>
+                <td class="gold star">★</td>
+                <td class="plat star">★</td>
+                <td class="dia star">★</td>
+              </tr>
+
+              <!-- coin -->
+              <tr>
+                <td>
+                  <div class="vip-bonus-cell">
+                    <span class="vip-icon">
+                      <img src="assets/icon-coin-drop.png" alt="" />
+                    </span>
+                    <div>
+                      <div class="vip-title">Coin Drops</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="bronze star">★</td>
+                <td class="silver star">★</td>
+                <td class="gold star">★</td>
+                <td class="plat star">★</td>
+                <td class="dia star">★</td>
+              </tr>
+
+              <!-- tips -->
+              <tr>
+                <td>
+                  <div class="vip-bonus-cell">
+                    <span class="vip-icon">
+                      <img src="assets/icon-tips.png" alt="" />
+                    </span>
+                    <div>
+                      <div class="vip-title">Tips</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="bronze star" style="color: gray">--</td>
+                <td class="silver star">★</td>
+                <td class="gold star">★</td>
+                <td class="plat star">★</td>
+                <td class="dia star">★</td>
+              </tr>
+
+              <!-- VIP Spin -->
+              <tr>
+                <td>
+                  <div class="vip-bonus-cell">
+                    <span class="vip-icon">
+                      <img src="assets/icon-spin.png" alt="" />
+                    </span>
+                    <div>
+                      <div class="vip-title">VIP Spin</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="bronze star" style="color: gray">--</td>
+                <td class="silver star">★</td>
+                <td class="gold star">★</td>
+                <td class="plat star">★</td>
+                <td class="dia star">★</td>
+              </tr>
+
+              <!-- level-up bonus -->
+              <tr>
+                <td>
+                  <div class="vip-bonus-cell">
+                    <span class="vip-icon">
+                      <img src="assets/icon-bonus.png" alt="" />
+                    </span>
+                    <div>
+                      <div class="vip-title">Level-up Bonus</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="bronze star" style="color: gray">--</td>
+                <td class="silver star" style="color: gray">--</td>
+                <td class="gold star">★</td>
+                <td class="plat star">★</td>
+                <td class="dia star">★</td>
+              </tr>
+
+              <!-- Recharge -->
+              <tr>
+                <td>
+                  <div class="vip-bonus-cell">
+                    <span class="vip-icon">
+                      <img src="assets/icon-recharge.png" alt="" />
+                    </span>
+                    <div>
+                      <div class="vip-title">Recharge</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="bronze star" style="color: gray">--</td>
+                <td class="silver star" style="color: gray">--</td>
+                <td class="gold star">★</td>
+                <td class="plat star">★</td>
+                <td class="dia star">★</td>
+              </tr>
+
+              <!-- Weekly Cashback -->
+              <tr>
+                <td>
+                  <div class="vip-bonus-cell">
+                    <span class="vip-icon">
+                      <img src="assets/icon-withdraw.png" alt="" />
+                    </span>
+                    <div>
+                      <div class="vip-title">Weekly Cashback</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="bronze star" style="color: gray">--</td>
+                <td class="silver star" style="color: gray">--</td>
+                <td class="gold star">★</td>
+                <td class="plat star">★</td>
+                <td class="dia star">★</td>
+              </tr>
+
+              <!-- Monthly Cashback -->
+              <tr>
+                <td>
+                  <div class="vip-bonus-cell">
+                    <span class="vip-icon">
+                      <img src="assets/icon-cashback-monthly.png" alt="" />
+                    </span>
+                    <div>
+                      <div class="vip-title">Monthly Cashback</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="bronze star" style="color: gray">--</td>
+                <td class="silver star" style="color: gray">--</td>
+                <td class="gold star">★</td>
+                <td class="plat star">★</td>
+                <td class="dia star">★</td>
+              </tr>
+
+              <!-- Taco Tuesday -->
+              <tr>
+                <td>
+                  <div class="vip-bonus-cell">
+                    <span class="vip-icon">
+                      <img src="assets/icon-taco-31691dd7.png" alt="" />
+                    </span>
+                    <div>
+                      <div class="vip-title">Taco Tuesday</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="bronze star" style="color: gray">--</td>
+                <td class="silver star" style="color: gray">--</td>
+                <td class="gold star">★</td>
+                <td class="plat star">★</td>
+                <td class="dia star">★</td>
+              </tr>
+
+              <!-- Sports Weekly Cashback -->
+              <tr>
+                <td>
+                  <div class="vip-bonus-cell">
+                    <span class="vip-icon">
+                      <img src="assets/icon-sport.png" alt="" />
+                    </span>
+                    <div>
+                      <div class="vip-title">Sports Weekly Cashback</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="bronze star" style="color: gray">--</td>
+                <td class="silver star" style="color: gray">--</td>
+                <td class="gold star">★</td>
+                <td class="plat star">★</td>
+                <td class="dia star">★</td>
+              </tr>
+
+              <!-- No-fee Withdrawal -->
+              <tr>
+                <td>
+                  <div class="vip-bonus-cell">
+                    <span class="vip-icon">
+                      <img src="assets/icon-withdraw.png" alt="" />
+                    </span>
+                    <div>
+                      <div class="vip-title">No-fee Withdrawal</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="bronze star" style="color: gray">--</td>
+                <td class="silver star" style="color: gray">--</td>
+                <td class="gold star" style="color: gray">--</td>
+                <td class="plat star">★</td>
+                <td class="dia star">★</td>
+              </tr>
+
+              <!-- Exclusive SVIP -->
+              <tr>
+                <td>
+                  <div class="vip-bonus-cell">
+                    <span class="vip-icon">
+                      <img src="assets/icon-svip.png" alt="" />
+                    </span>
+                    <div>
+                      <div class="vip-title">Exclusive SVIP</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="bronze star" style="color: gray">--</td>
+                <td class="silver star" style="color: gray">--</td>
+                <td class="gold star" style="color: gray">--</td>
+                <td class="plat star" style="color: gray">--</td>
+                <td class="dia star">★</td>
+              </tr>
+
+              <!-- Luxury Giveaway -->
+              <tr>
+                <td>
+                  <div class="vip-bonus-cell">
+                    <span class="vip-icon">
+                      <img src="assets/icon-giveaway.png" alt="" />
+                    </span>
+                    <div>
+                      <div class="vip-title">Luxury Giveaway</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="bronze star" style="color: gray">--</td>
+                <td class="silver star" style="color: gray">--</td>
+                <td class="gold star" style="color: gray">--</td>
+                <td class="plat star" style="color: gray">--</td>
+                <td class="dia star">★</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
-    </section>
+    </div>
+
+    <script>
+      let currentIndex = 0;
+      const maxIndex = 3; // We have 4 scrollable columns (Silver, Gold, Platinum, Diamond)
+
+      function navigate(direction) {
+        const scroll = document.getElementById("vipScroll");
+        const silverPrevBtn = document.getElementById("silverPrevBtn");
+        const silverNextBtn = document.getElementById("silverNextBtn");
+
+        // Calculate column width based on screen size
+        let columnWidth;
+        if (window.innerWidth <= 400) {
+          columnWidth = 80; // mobile small column width
+        } else if (window.innerWidth <= 767) {
+          columnWidth = 75; // mobile column width
+        } else {
+          return; // Don't navigate on desktop
+        }
+
+        // Update index
+        currentIndex = Math.max(
+          0,
+          Math.min(maxIndex, currentIndex + direction)
+        );
+
+        // Calculate scroll position (Bronze column is fixed, so we scroll from Silver onwards)
+        const scrollPosition = currentIndex * columnWidth;
+
+        // Scroll to position
+        scroll.scrollTo({
+          left: scrollPosition,
+          behavior: "smooth",
+        });
+
+        // Update button states
+        updateButtonStates();
+      }
+
+      function updateButtonStates() {
+        const silverPrevBtn = document.getElementById("silverPrevBtn");
+        const silverNextBtn = document.getElementById("silverNextBtn");
+
+        // Disable/enable buttons based on current position
+        const atStart = currentIndex === 0;
+        const atEnd = currentIndex === maxIndex;
+
+        silverPrevBtn.classList.toggle("disabled", atStart);
+        silverNextBtn.classList.toggle("disabled", atEnd);
+      }
+
+      // Initialize button states
+      window.addEventListener("load", updateButtonStates);
+
+      // Handle manual scrolling to update button states
+      document
+        .getElementById("vipScroll")
+        .addEventListener("scroll", function () {
+          if (window.innerWidth <= 767) {
+            let columnWidth = window.innerWidth <= 400 ? 65 : 75;
+            const scrollLeft = this.scrollLeft;
+            currentIndex = Math.round(scrollLeft / columnWidth);
+            updateButtonStates();
+          }
+        });
+
+      // Update on window resize
+      window.addEventListener("resize", function () {
+        updateButtonStates();
+        if (window.innerWidth > 767) {
+          // Reset scroll position on desktop
+          document
+            .getElementById("vipScroll")
+            .scrollTo({ left: 0, behavior: "smooth" });
+          currentIndex = 0;
+        }
+      });
+    </script>
   </body>
 </html>
