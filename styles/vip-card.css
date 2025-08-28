@@ -229,9 +229,7 @@ body {
   width: var(--chev-size);
   height: var(--chev-size);
   min-width: var(--chev-size);
-  border-radius: 8px;
   background: var(--chev-bg);
-  border: 1px solid var(--chev-bd);
   display: inline-flex;
   align-items: center;
   justify-content: center;

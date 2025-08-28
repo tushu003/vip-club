@@ -183,6 +183,62 @@ body {
   margin: 2px 0 10px;
 }
 
+.modal-header {
+  display: flex;
+  align-items: center;     /* ✅ vertically center */
+  gap: 12px;               /* space between button & title */
+  padding: 8px 16px;       /* balanced padding */
+  background: #fff;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.back-btn {
+  --chev-size: 40px;
+  --chev-bg: #f1f5f9;
+  --chev-bg-hover: #e2e8f0;
+  --chev-ink: #0f172a;
+
+  width: var(--chev-size);
+  height: var(--chev-size);
+  flex: 0 0 var(--chev-size);   /* ✅ no shrink/grow */
+  border-radius: 50%;
+  border: none;
+  background: var(--chev-bg);
+
+  display: flex;                /* center arrow */
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.2s ease;
+  overflow: hidden;             /* ✅ no clipping */
+  padding: 0;                   /* remove extra padding */
+  box-sizing: border-box;
+}
+
+/* Arrow inside */
+.back-btn::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-left: 2px solid var(--chev-ink);
+  border-bottom: 2px solid var(--chev-ink);
+  transform: rotate(45deg);     /* left arrow */
+  display: block;
+}
+
+/* Hover / active */
+.back-btn:hover {
+  background: var(--chev-bg-hover);
+  transform: translateX(-2px);
+}
+.back-btn:active {
+  transform: translateX(-1px) scale(0.95);
+}
+
+
+
+
 .xp-row {
   display: flex;
   justify-content: space-between;
@@ -250,21 +306,69 @@ body {
   gap: 16px;
 }
 
+/* 1) Make the button truly square & override the generic .back-button rules */
+.modal-header .back-button.back-btn {
+  --chev-size: 40px;
+  --chev-bg: #f1f5f9;
+  --chev-bg-hover: #e2e8f0;
+  --chev-ink: #0f172a;
+
+  width: var(--chev-size) !important;
+  height: var(--chev-size) !important;
+  flex: 0 0 var(--chev-size);
+  padding: 0 !important;                /* override old padding */
+  border: none !important;
+  border-radius: 50%;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  line-height: 1;                       /* no text line-box creep */
+  box-sizing: border-box;
+  overflow: visible;
+  cursor: pointer;
+  transition: background-color .25s ease, transform .2s ease;
+  /* optional: remove translate on hover if parent ever has overflow hidden */
+}
+.modal-header .back-button.back-btn::before {
+  content: "";
+  width: 12px; height: 12px;
+  border-left: 2px solid var(--chev-ink);
+  border-bottom: 2px solid var(--chev-ink);
+  transform: rotate(45deg);             /* ← chevron */
+  display: block;
+}
+.modal-header .back-button.back-btn:hover { background: var(--chev-bg-hover); }
+
+/* 2) Make sure header is tall enough for a 40px circle + padding */
+.modal-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  min-height: calc(8px + var(--chev-size) + 8px); /* top+bottom pad + btn */
+}
+
+/* (Optional) If any parent accidentally clips children */
+.modal-header, .modal-title { overflow: visible; }
+
+
 .modal-top-content {
   background-color: var(--white);
-  padding: 2px 20px;
-  margin: 12px 28px;
+  padding: 2px 8px;
+  margin: 12px 8px;
   border-radius: 16px;
 }
 
 .modal-heading {
-  font-size: 14px;
-  font-weight: 400;
+  font-size: 18px;
+  font-weight: 600;
   color: var(--text-dark);
 }
 
 .modal-paragraph {
-  margin-top: -12px;
+  margin-top: -10px;
   font-size: 14px;
   font-weight: 400;
   color: var(--text-light);
@@ -506,7 +610,7 @@ body {
 }
 
 .tier-header.expanded .expand-arrow {
-  transform: rotate(180deg);
+  transform: rotate(90deg);
 }
 
 /* --------- VIP Level Details --------- */
