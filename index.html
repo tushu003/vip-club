@@ -231,8 +231,8 @@
         gap: 6px;
       }
       .vip-tier img {
-        width: 20px;
-        height: 20px;
+        width: 30px;
+        height: 30px;
         display: block;
       }
       .bonus-type {
@@ -357,8 +357,8 @@
           font-size: 10px;
         }
         .vip-tier img {
-          width: 14px;
-          height: 14px;
+          width: 30px;
+          height: 30px;
         }
 
         /* tighter column widths for tiny phones */
@@ -767,11 +767,11 @@
         // Calculate column width based on screen size
         let columnWidth;
         if (window.innerWidth <= 400) {
-          columnWidth = 80; // mobile small column width
+          columnWidth = 80;
         } else if (window.innerWidth <= 767) {
-          columnWidth = 75; // mobile column width
+          columnWidth = 80;
         } else {
-          return; // Don't navigate on desktop
+          return;
         }
 
         // Update index
