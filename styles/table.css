@@ -1,0 +1,436 @@
+   /* ========== Container ========== */
+   .vip-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 16px;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
+      Arial, "Noto Sans";
+    color: #102039;
+    background: #fff;
+    margin-top: 20px;
+  }
+  .vip-container h1 {
+    margin: 0 0 6px;
+    font-size: clamp(20px, 2.2vw + 12px, 32px);
+    letter-spacing: -0.02em;
+  }
+  .vip-container .subtitle {
+    margin: 0 0 16px;
+    color: #5a6a85;
+  }
+
+  /* ========== Shell ========== */
+  .vip-wrap {
+    background: #f9fbff;
+    border: 1px solid #e8eef7;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px -10px rgba(0, 0, 0, 0.15);
+    position: relative;
+  }
+  .vip-scroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+  .vip-scroll::-webkit-scrollbar {
+    height: 8px;
+  }
+  .vip-scroll::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 999px;
+  }
+
+  /* ========== Silver Column Navigation Arrows ========== */
+  .silver-nav-arrow {
+    position: absolute;
+    top: 24px; /* Position at header level */
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid #e8eef7;
+    border-radius: 50%;
+    display: none; /* Hidden by default, shown only on mobile */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 16; /* Higher than regular nav arrows */
+    font-size: 10px;
+    color: #5a6a85;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  .silver-nav-arrow:hover {
+    background: #fff;
+    color: #102039;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  }
+  .silver-nav-arrow.disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+  .silver-nav-left {
+    left: 162px; /* Position just left of Silver column */
+  }
+  .silver-nav-right {
+    left: 242px; /* Position just right of Silver column */
+  }
+
+  /* ========== Table ========== */
+  .vip-table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: max-content;
+    min-width: 100%;
+    font-size: 15px;
+  }
+  /* desktop/base widths */
+  .vip-table th:nth-child(1),
+  .vip-table td:nth-child(1) {
+    min-width: 200px; /* Reduced from 300px */
+    max-width: 200px;
+  }
+  .vip-table th:nth-child(2),
+  .vip-table td:nth-child(2) {
+    min-width: 120px; /* Bronze column */
+    max-width: 120px;
+  }
+  .vip-table th:nth-child(n + 3),
+  .vip-table td:nth-child(n + 3) {
+    min-width: 140px;
+  }
+
+  .vip-table th,
+  .vip-table td {
+    padding: 12px 14px;
+    text-align: center;
+    background: #fff;
+    border-right: 1px solid #e8eef7;
+  }
+  .vip-table th:first-child,
+  .vip-table td:first-child {
+    white-space: normal; /* Allow text wrapping */
+    word-wrap: break-word;
+  }
+  .vip-table th:not(:first-child),
+  .vip-table td:not(:first-child) {
+    white-space: nowrap;
+  }
+  .vip-table th:last-child,
+  .vip-table td:last-child {
+    border-right: 0;
+  }
+
+  /* sticky header + first two cols */
+  .vip-table thead th {
+    position: sticky;
+    top: 0;
+    background: #f1f6ff;
+    z-index: 5;
+    border-bottom: 1px solid #e8eef7;
+  }
+  .vip-table thead th:first-child,
+  .vip-table td:first-child {
+    position: sticky;
+    left: 0;
+    background: #fff;
+    z-index: 8; /* Higher z-index for Bonus Type */
+    text-align: left;
+    box-shadow: 2px 0 8px -2px rgba(0, 0, 0, 0.15);
+  }
+  .vip-table thead th:first-child {
+    background: #f1f6ff;
+  }
+  /* Bronze column also sticky */
+  .vip-table thead th:nth-child(2) {
+    position: sticky;
+    left: 200px; /* width of first column */
+    background: #f1f6ff;
+    z-index: 7; /* Lower than Bonus Type */
+    box-shadow: 2px 0 8px -2px rgba(0, 0, 0, 0.12);
+  }
+  .vip-table td:nth-child(2) {
+    position: sticky;
+    left: 200px; /* width of first column */
+    background: #fff;
+    z-index: 6; /* Lower than Bonus Type data cells */
+    box-shadow: 2px 0 8px -2px rgba(0, 0, 0, 0.12);
+  }
+
+  .vip-table tbody tr:nth-child(even) td {
+    background: #f6f8fc;
+  }
+  .vip-table tbody tr:nth-child(even) td:first-child,
+  .vip-table tbody tr:nth-child(even) td:nth-child(2) {
+    background: #fff;
+  }
+
+  /* bottom border for tier columns (3..6) */
+  .vip-table tbody td:nth-child(n + 3) {
+    border-bottom: 1px solid #e8eef7;
+  }
+
+  /* ========== Bonus Type cell ========== */
+  .vip-bonus-cell {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    align-items: center;
+    column-gap: 8px;
+  }
+
+  .vip-icon {
+    width: 36px;
+    height: 36px;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+  }
+
+  .vip-icon img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .vip-bonus-cell > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+  }
+
+  .vip-title {
+    line-height: 1.2;
+    font-weight: 600;
+    font-size: 15px;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .vip-sub {
+    line-height: 1.1;
+    font-size: 12px;
+    color: #5a6a85;
+  }
+
+  /* ========== Tier headers (with images) ========== */
+  .vip-tier {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .vip-tier img {
+    width: 30px;
+    height: 30px;
+    display: block;
+  }
+  .bonus-type {
+    color: #5a6a85;
+    font-weight: 700;
+  }
+
+  /* colors (optional accents) */
+  .bronze {
+    color: #c68a51;
+  }
+  .silver {
+    color: #a3adbf;
+  }
+  .gold {
+    color: #f7c948;
+  }
+  .plat {
+    color: #7f72ff;
+  }
+  .dia {
+    color: #ff7ab8;
+  }
+  .star {
+    font-size: 18px;
+  }
+  .dash {
+    color: #5a6a85;
+  }
+
+  /* ========== Mobile: sticky Bronze + navigation ========== */
+  @media (max-width: 767px) {
+    /* show silver column navigation arrows */
+    .silver-nav-arrow {
+      display: flex;
+    }
+
+    /* Adjust silver nav positions for mobile */
+    .silver-nav-left {
+      left: 92px; /* Just left of Silver column on mobile */
+    }
+    .silver-nav-right {
+      left: 162px; /* Just right of Silver column on mobile */
+    }
+
+    /* compact header */
+    .vip-table thead th {
+      padding: 6px 4px;
+      font-size: 12px;
+      line-height: 1.2;
+    }
+    .vip-tier {
+      gap: 4px;
+    }
+    .vip-tier img {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* adjust column widths for mobile */
+    .vip-table th:nth-child(1),
+    .vip-table td:nth-child(1) {
+      min-width: 100px; /* Smaller Bonus Type column */
+      max-width: 100px;
+    }
+
+    /* Bronze column sticky positioning */
+    .vip-table th:nth-child(2),
+    .vip-table td:nth-child(2) {
+      min-width: 70px;
+      max-width: 70px;
+    }
+    .vip-table thead th:nth-child(2) {
+      left: 100px; /* width of first column on mobile */
+    }
+    .vip-table td:nth-child(2) {
+      left: 100px; /* width of first column on mobile */
+    }
+
+    /* other tier columns */
+    .vip-table th:nth-child(n + 3),
+    .vip-table td:nth-child(n + 3) {
+      min-width: 75px;
+    }
+
+    /* compact first column content */
+    .vip-bonus-cell {
+      grid-template-columns: 20px 1fr;
+      gap: 6px;
+    }
+    .vip-icon {
+      width: 20px;
+      height: 20px;
+      font-size: 12px;
+      border-radius: 6px;
+    }
+    .vip-title {
+      font-size: 11px;
+      line-height: 1.2;
+      white-space: normal; /* Allow wrapping */
+    }
+    .vip-sub {
+      display: none;
+    }
+
+    /* cell padding smaller */
+    .vip-table td {
+      padding: 6px 4px;
+      font-size: 12px;
+    }
+
+    /* Bonus Type header */
+    .bonus-type {
+      font-size: 10px;
+    }
+  }
+
+    /* smaller silver navigation arrows */
+    .silver-nav-arrow {
+      width: 18px;
+      height: 18px;
+      font-size: 9px;
+      top: 10px; /* Adjust for smaller header */
+    }
+    .silver-nav-left {
+      left: 170px; /* Adjusted for smaller columns */
+    }
+    .silver-nav-right {
+      left: 240px; /* Adjusted for smaller columns */
+    }
+
+    /* Bonus Type header */
+    .bonus-type {
+      font-size: 9px;
+    }
+
+  @media (max-width: 400px) {
+    /* even smaller header */
+    .vip-table thead th {
+      padding: 4px 2px;
+      font-size: 10px;
+    }
+    .vip-tier img {
+      width: 30px;
+      height: 30px;
+    }
+
+    /* tighter column widths for tiny phones */
+    .vip-table th:nth-child(1),
+    .vip-table td:nth-child(1) {
+      min-width: 90px; /* Even smaller Bonus Type column */
+      max-width: 90px;
+    }
+
+    .vip-table th:nth-child(2),
+    .vip-table td:nth-child(2) {
+      min-width: 85px;
+      max-width: 60px;
+    }
+    .vip-table thead th:nth-child(2) {
+      left: 90px;
+    }
+    .vip-table td:nth-child(2) {
+      left: 90px;
+    }
+
+    .vip-table th:nth-child(n + 3),
+    .vip-table td:nth-child(n + 3) {
+      min-width: 80px;
+    }
+
+    .vip-icon {
+      width: 18px;
+      height: 18px;
+      font-size: 10px;
+    }
+    .vip-title {
+      font-size: 10px;
+    }
+    .vip-table td {
+      padding: 5px 2px;
+      font-size: 11px;
+    }
+    .vip-bonus-cell {
+      grid-template-columns: 18px 1fr;
+      gap: 4px;
+    }
+
+    /* smaller silver navigation arrows */
+    .silver-nav-arrow {
+      width: 18px;
+      height: 18px;
+      font-size: 9px;
+      top: 10px; /* Adjust for smaller header */
+    }
+    .silver-nav-left {
+      left: 170px; /* Adjusted for smaller columns */
+    }
+    .silver-nav-right {
+      left: 240px; /* Adjusted for smaller columns */
+    }
+
+    /* Bonus Type header */
+    .bonus-type {
+      font-size: 9px;
+    }
+  }
