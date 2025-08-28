@@ -2,28 +2,37 @@
 
 /* Tokens (tuned for 2-up mobile grid) */
 :root {
+  /* Backgrounds */
   --bg-page: 244 244 244;
   --bg-card: 255 255 255;
+
+  /* Text */
   --text-strong: 0 0 0;
   --text-body: 23 26 26;
 
+  /* Borders / Shadows */
+  --border-card: 0 0 0; /* base black with alpha below */
+  --shadow-card: 16 24 40;
+
+  /* Typography */
   --ff: "AvertaStd", Arial, sans-serif;
   --fw-regular: 400;
   --fw-bold: 700;
-
-  /* keep typography same-to-same */
   --fz-title: clamp(20px, 6.25vw, 22px);
   --lh-title: 1.25;
   --fz-desc: clamp(14px, 4.375vw, 16px);
   --lh-desc: 1.6;
 
-  /* tighter gaps for 2-up */
+  /* Spacing & Layout */
   --gap-grid: clamp(12px, 4vw, 16px);
   --space-card: clamp(14px, 4.5vw, 20px);
   --space-top-img: clamp(6px, 2vw, 8px);
-
-  /* smaller, fluid icon so two cards fit nicely */
   --img: clamp(100px, 30vw, 140px);
+
+  /* Element-specific colors */
+  --color-card-border: rgba(var(--border-card),0.08);
+  --color-card-shadow: rgba(var(--shadow-card),0.05);
+  --color-card-shadow-hover: rgba(var(--shadow-card),0.08);
 }
 
 /* sr-only helper stays same */
@@ -54,16 +63,16 @@ body {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--gap-grid);
-  align-items: stretch; /* equal heights per row */
+  align-items: stretch;
 }
 
 /* Card */
 .vip-card {
   position: relative;
   background: rgb(var(--bg-card));
-  border: 1px solid rgba(0,0,0,0.08);
+  border: 1px solid var(--color-card-border);
   border-radius: 16px;
-  box-shadow: 0 1px 2px rgba(16,24,40,0.05);
+  box-shadow: 0 1px 2px var(--color-card-shadow);
   padding: calc(var(--space-card) + var(--img) / 2)
            var(--space-card)
            var(--space-card);
@@ -74,7 +83,7 @@ body {
 }
 .vip-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(16,24,40,0.08);
+  box-shadow: 0 4px 10px var(--color-card-shadow-hover);
 }
 
 /* Icon */
@@ -88,7 +97,7 @@ body {
   pointer-events: none;
 }
 
-/* Title & description (unchanged) */
+/* Title & description */
 .vip-card__title {
   margin: 8px 0 8px;
   font-weight: var(--fw-bold);
@@ -107,5 +116,5 @@ body {
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .vip-card { transition: none; }
-  .vip-card:hover { transform: none; box-shadow: 0 1px 2px rgba(16,24,40,0.05); }
+  .vip-card:hover { transform: none; box-shadow: 0 1px 2px var(--color-card-shadow); }
 }
