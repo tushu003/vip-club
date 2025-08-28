@@ -9,8 +9,1625 @@
     />
     <title>VIP Club</title>
     <link rel="stylesheet" href="/styles/vip-card.css" />
+    <link rel="stylesheet" href="/styles/banner.css" />
   </head>
   <body>
+    <!-- banner section -->
+     <div class="card">
+      <div class="banner-card">
+        <div class="vip-details">
+          <h2 class="vip-level">VIP 0</h2>
+          <div class="xp-row">
+            <span>0 XP</span>
+            <span>1 XP</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress" style="width: 0%"></div>
+          </div>
+        </div>
+        <div class="vip-icon">
+          <img src="assets/icons/badge-none.png" alt="VIP Badge" />
+        </div>
+      </div>
+      <div>
+        <button class="level-up-btn" onclick="openModal()">
+          View Level Up Detail
+        </button>
+      </div>
+    </div> 
+
+    <!-- Modal/Full Screen Page -->
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button class="back-button" onclick="closeModal()"><</button>
+          <h2 class="modal-title">VIP Level Details</h2>
+        </div>
+
+        <div class="modal-top-content">
+          <h2 class="modal-heading">XP Calculation:</h2>
+          <p class="modal-paragraph">
+            XP for Originals, Slots, and Live Casino is based on wager and house
+            edge (max 4%); $1 wager counts 1 XP, Racing/Lottery/Trading count
+            1x, Sports count 2x.
+          </p>
+        </div>
+
+        <div class="vip-tiers">
+          <!-- Bronze Tier -->
+          <div class="tier-section bronze">
+            <div class="tier-header" onclick="toggleTier(this)">
+              <div style="display: flex; align-items: center">
+                <div class="ribbon"></div>
+                <div class="tier-info">
+                  <h3 class="tier-title">Bronze VIP 2-7</h3>
+                </div>
+              </div>
+              <span class="expand-arrow">▼</span>
+            </div>
+            <div class="tier-levels">
+              <div class="level-item">
+                <div class="level-number" style="background: none">Level</div>
+                <span class="level-label">Required XP</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <div class="level-img">
+                    <img src="assets/icons/badge-bronze.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 02</span>
+                </div>
+                <span class="level-xp">100</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number"></div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-bronze.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 03</span>
+                </div>
+                <span class="level-xp">200</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">53</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-bronze.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 04</span>
+                </div>
+                <span class="level-xp">1000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">54</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-bronze.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 05</span>
+                </div>
+                <span class="level-xp">2000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-bronze.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 06</span>
+                </div>
+                <span class="level-xp">3000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-bronze.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 07</span>
+                </div>
+                <span class="level-xp">4000</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- silver tier -->
+          <div class="tier-section bronze">
+            <div class="tier-header" onclick="toggleTier(this)">
+              <div style="display: flex; align-items: center">
+                <div class="silver"></div>
+                <div class="tier-info">
+                  <h3 class="tier-title">Silver VIP 8-21</h3>
+                </div>
+              </div>
+              <span class="expand-arrow">▼</span>
+            </div>
+            <div class="tier-levels">
+              <div class="level-item">
+                <div class="level-number" style="background: none">Level</div>
+                <span class="level-label">Required XP</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <div class="level-img">
+                    <img src="assets/icons/badge-silver.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 08</span>
+                </div>
+                <span class="level-xp">5000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number"></div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-silver.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 09</span>
+                </div>
+                <span class="level-xp">7000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">53</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-silver.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 10</span>
+                </div>
+                <span class="level-xp">9000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">54</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-silver.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 11</span>
+                </div>
+                <span class="level-xp">11000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-silver.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 12</span>
+                </div>
+                <span class="level-xp">13000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-silver.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 13</span>
+                </div>
+                <span class="level-xp">15000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-silver.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 14</span>
+                </div>
+                <span class="level-xp">17000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-silver.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 15</span>
+                </div>
+                <span class="level-xp">19000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-silver.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 16</span>
+                </div>
+                <span class="level-xp">25000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-silver.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 17</span>
+                </div>
+                <span class="level-xp">29000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-silver.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 18</span>
+                </div>
+                <span class="level-xp">33000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-silver.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 19</span>
+                </div>
+                <span class="level-xp">37000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-silver.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 20</span>
+                </div>
+                <span class="level-xp">41000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-silver.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 21</span>
+                </div>
+                <span class="level-xp">45000</span>
+              </div>
+            </div>
+          </div>
+          <!-- gold tier -->
+          <div class="tier-section bronze">
+            <div class="tier-header" onclick="toggleTier(this)">
+              <div style="display: flex; align-items: center">
+                <div class="gold"></div>
+                <div class="tier-info">
+                  <h3 class="tier-title">Gold VIP 22-37</h3>
+                </div>
+              </div>
+              <span class="expand-arrow">▼</span>
+            </div>
+            <div class="tier-levels">
+              <div class="level-item">
+                <div class="level-number" style="background: none">Level</div>
+                <span class="level-label">Required XP</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <div class="level-img">
+                    <img src="assets/icons/badge-gold.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 22</span>
+                </div>
+                <span class="level-xp">49000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number"></div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-gold.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 23</span>
+                </div>
+                <span class="level-xp">59000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">53</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-gold.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 24</span>
+                </div>
+                <span class="level-xp">69000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">54</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-gold.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 25</span>
+                </div>
+                <span class="level-xp">79000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-gold.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 26</span>
+                </div>
+                <span class="level-xp">89000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-gold.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 27</span>
+                </div>
+                <span class="level-xp">99000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-gold.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 28</span>
+                </div>
+                <span class="level-xp">109000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-gold.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 29</span>
+                </div>
+                <span class="level-xp">119000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-gold.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 30</span>
+                </div>
+                <span class="level-xp">129000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-gold.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 31</span>
+                </div>
+                <span class="level-xp">153000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-gold.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 32</span>
+                </div>
+                <span class="level-xp">177000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-gold.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 33</span>
+                </div>
+                <span class="level-xp">209000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-gold.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 34</span>
+                </div>
+                <span class="level-xp">225000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-gold.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 35</span>
+                </div>
+                <span class="level-xp">249000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-gold.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 36</span>
+                </div>
+                <span class="level-xp">273000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-gold.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 37</span>
+                </div>
+                <span class="level-xp">297000</span>
+              </div>
+            </div>
+          </div>
+          <!-- platinum tier -->
+          <div class="tier-section bronze">
+            <div class="tier-header" onclick="toggleTier(this)">
+              <div style="display: flex; align-items: center">
+                <div class="platinum"></div>
+                <div class="tier-info">
+                  <h3 class="tier-title">Platinum I VIP 38-55</h3>
+                </div>
+              </div>
+              <span class="expand-arrow">▼</span>
+            </div>
+            <div class="tier-levels">
+              <div class="level-item">
+                <div class="level-number" style="background: none">Level</div>
+                <span class="level-label">Required XP</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <div class="level-img">
+                    <img src="assets/icons/badge-platinum.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 38</span>
+                </div>
+                <span class="level-xp">321000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number"></div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-platinum.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 39</span>
+                </div>
+                <span class="level-xp">377000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">53</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-platinum.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 40</span>
+                </div>
+                <span class="level-xp">433000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">54</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-platinum.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 41</span>
+                </div>
+                <span class="level-xp">489000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-platinum.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 42</span>
+                </div>
+                <span class="level-xp">545000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-platinum.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 43</span>
+                </div>
+                <span class="level-xp">601000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-platinum.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 44</span>
+                </div>
+                <span class="level-xp">657000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-platinum.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 45</span>
+                </div>
+                <span class="level-xp">713000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-platinum.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 46</span>
+                </div>
+                <span class="level-xp">769000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-platinum.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 47</span>
+                </div>
+                <span class="level-xp">897000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-platinum.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 48</span>
+                </div>
+                <span class="level-xp">1025000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-platinum.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 49</span>
+                </div>
+                <span class="level-xp">1153000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-platinum.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 50</span>
+                </div>
+                <span class="level-xp">1281000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-platinum.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 51</span>
+                </div>
+                <span class="level-xp">1409000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-platinum.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 52</span>
+                </div>
+                <span class="level-xp">1537000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-platinum.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 53</span>
+                </div>
+                <span class="level-xp">1665000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-platinum.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 54</span>
+                </div>
+                <span class="level-xp">1793000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-platinum.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 55</span>
+                </div>
+                <span class="level-xp">2081000</span>
+              </div>
+            </div>
+          </div>
+          <!-- platinum tier2 -->
+          <div class="tier-section bronze">
+            <div class="tier-header" onclick="toggleTier(this)">
+              <div style="display: flex; align-items: center">
+                <div class="platinum"></div>
+                <div class="tier-info">
+                  <h3 class="tier-title">Platinum II VIP 56-69</h3>
+                </div>
+              </div>
+              <span class="expand-arrow">▼</span>
+            </div>
+            <div class="tier-levels">
+              <div class="level-item">
+                <div class="level-number" style="background: none">Level</div>
+                <span class="level-label">Required XP</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <div class="level-img">
+                    <img src="assets/icons/badge-platinum.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 56</span>
+                </div>
+                <span class="level-xp">2369000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number"></div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-platinum.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 57</span>
+                </div>
+                <span class="level-xp">2657000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">53</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-platinum.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 58</span>
+                </div>
+                <span class="level-xp">2945000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">54</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-platinum.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 59</span>
+                </div>
+                <span class="level-xp">3233000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-platinum.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 60</span>
+                </div>
+                <span class="level-xp">3521000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-platinum.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 61</span>
+                </div>
+                <span class="level-xp">3809000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-platinum.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 62</span>
+                </div>
+                <span class="level-xp">4097000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-platinum.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 63</span>
+                </div>
+                <span class="level-xp">4737000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-platinum.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 64</span>
+                </div>
+                <span class="level-xp">5377000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-platinum.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 65</span>
+                </div>
+                <span class="level-xp">6017000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-platinum.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 66</span>
+                </div>
+                <span class="level-xp">6657000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-platinum.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 67</span>
+                </div>
+                <span class="level-xp">7297000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-platinum.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 68</span>
+                </div>
+                <span class="level-xp">7937000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-platinum.png" alt="" />
+                  </div>
+                  <span class="level-label">VIP 69</span>
+                </div>
+                <span class="level-xp">8577000</span>
+              </div>
+            </div>
+          </div>
+          <!-- diamond tier -->
+          <div class="tier-section bronze">
+            <div class="tier-header" onclick="toggleTier(this)">
+              <div style="display: flex; align-items: center">
+                <div class="diamond"></div>
+                <div class="tier-info">
+                  <h3 class="tier-title">Diamond I SVIP 1-15</h3>
+                </div>
+              </div>
+              <span class="expand-arrow">▼</span>
+            </div>
+            <div class="tier-levels">
+              <div class="level-item">
+                <div class="level-number" style="background: none">Level</div>
+                <span class="level-label">Required XP</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 01</span>
+                </div>
+                <span class="level-xp">9217000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number"></div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 02</span>
+                </div>
+                <span class="level-xp">10625000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">53</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 03</span>
+                </div>
+                <span class="level-xp">12033000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">54</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 04</span>
+                </div>
+                <span class="level-xp">13441000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 05</span>
+                </div>
+                <span class="level-xp">14849000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 06</span>
+                </div>
+                <span class="level-xp">16257000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 07</span>
+                </div>
+                <span class="level-xp">17665000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 08</span>
+                </div>
+                <span class="level-xp">19073000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 09</span>
+                </div>
+                <span class="level-xp">20481000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 10</span>
+                </div>
+                <span class="level-xp">23553000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 11</span>
+                </div>
+                <span class="level-xp">26625000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 12</span>
+                </div>
+                <span class="level-xp">29697000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 13</span>
+                </div>
+                <span class="level-xp">32769000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 14</span>
+                </div>
+                <span class="level-xp">35841000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 15</span>
+                </div>
+                <span class="level-xp">38913000</span>
+              </div>
+            </div>
+          </div>
+          <!-- diamond2 tier -->
+          <div class="tier-section bronze">
+            <div class="tier-header" onclick="toggleTier(this)">
+              <div style="display: flex; align-items: center">
+                <div class="diamond"></div>
+                <div class="tier-info">
+                  <h3 class="tier-title">Diamond I SVIP 16-37</h3>
+                </div>
+              </div>
+              <span class="expand-arrow">▼</span>
+            </div>
+            <div class="tier-levels">
+              <div class="level-item">
+                <div class="level-number" style="background: none">Level</div>
+                <span class="level-label">Required XP</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 16</span>
+                </div>
+                <span class="level-xp">41985000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number"></div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 17</span>
+                </div>
+                <span class="level-xp">45057000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">53</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 18</span>
+                </div>
+                <span class="level-xp">51713000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">54</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 19</span>
+                </div>
+                <span class="level-xp">58369000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 20</span>
+                </div>
+                <span class="level-xp">65025000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 21</span>
+                </div>
+                <span class="level-xp">71681000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 22</span>
+                </div>
+                <span class="level-xp">78337000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 23</span>
+                </div>
+                <span class="level-xp">84993000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 24</span>
+                </div>
+                <span class="level-xp">91649000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 25</span>
+                </div>
+                <span class="level-xp">98305000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 26</span>
+                </div>
+                <span class="level-xp">112641000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 27</span>
+                </div>
+                <span class="level-xp">126977000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 28</span>
+                </div>
+                <span class="level-xp">141313000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 29</span>
+                </div>
+                <span class="level-xp">155649000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 30</span>
+                </div>
+                <span class="level-xp">169985000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 31</span>
+                </div>
+                <span class="level-xp">184321000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 32</span>
+                </div>
+                <span class="level-xp">198657000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 33</span>
+                </div>
+                <span class="level-xp">212993000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 34</span>
+                </div>
+                <span class="level-xp">243713000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 35</span>
+                </div>
+                <span class="level-xp">274433000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 36</span>
+                </div>
+                <span class="level-xp">305153000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 37</span>
+                </div>
+                <span class="level-xp">335873000</span>
+              </div>
+            </div>
+          </div>
+          <!-- diamond3 tier -->
+          <div class="tier-section bronze">
+            <div class="tier-header" onclick="toggleTier(this)">
+              <div style="display: flex; align-items: center">
+                <div class="diamond"></div>
+                <div class="tier-info">
+                  <h3 class="tier-title">Diamond I SVIP 38-75</h3>
+                </div>
+              </div>
+              <span class="expand-arrow">▼</span>
+            </div>
+            <div class="tier-levels">
+              <div class="level-item">
+                <div class="level-number" style="background: none">Level</div>
+                <span class="level-label">Required XP</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 38</span>
+                </div>
+                <span class="level-xp">366593000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number"></div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 39</span>
+                </div>
+                <span class="level-xp">397313000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">53</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 40</span>
+                </div>
+                <span class="level-xp">428033000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">54</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 41</span>
+                </div>
+                <span class="level-xp">458753000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 42</span>
+                </div>
+                <span class="level-xp">524289000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 43</span>
+                </div>
+                <span class="level-xp">589825000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 44</span>
+                </div>
+                <span class="level-xp">655361000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 45</span>
+                </div>
+                <span class="level-xp">720897000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 46</span>
+                </div>
+                <span class="level-xp">786433000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 47</span>
+                </div>
+                <span class="level-xp">851969000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 48</span>
+                </div>
+                <span class="level-xp">917505000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 49</span>
+                </div>
+                <span class="level-xp">983041000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 50</span>
+                </div>
+                <span class="level-xp">1122305000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 51</span>
+                </div>
+                <span class="level-xp">1261569000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 52</span>
+                </div>
+                <span class="level-xp">1400833000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 53</span>
+                </div>
+                <span class="level-xp">1540097000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 54</span>
+                </div>
+                <span class="level-xp">1679361000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 55</span>
+                </div>
+                <span class="level-xp">1818625000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 56</span>
+                </div>
+                <span class="level-xp">1957889000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 57</span>
+                </div>
+                <span class="level-xp">2097153000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 58</span>
+                </div>
+                <span class="level-xp">2392065000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 59</span>
+                </div>
+                <span class="level-xp">2686977000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 60</span>
+                </div>
+                <span class="level-xp">2981889000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 61</span>
+                </div>
+                <span class="level-xp">3276801000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 62</span>
+                </div>
+                <span class="level-xp">3571713000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 63</span>
+                </div>
+                <span class="level-xp">3866625000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 64</span>
+                </div>
+                <span class="level-xp">4161537000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 65</span>
+                </div>
+                <span class="level-xp">4456449000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 66</span>
+                </div>
+                <span class="level-xp">5079041000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 67</span>
+                </div>
+                <span class="level-xp">5701633000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 68</span>
+                </div>
+                <span class="level-xp">6324225000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 69</span>
+                </div>
+                <span class="level-xp">6946817000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 70</span>
+                </div>
+                <span class="level-xp">7569409000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 71</span>
+                </div>
+                <span class="level-xp">8192001000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 72</span>
+                </div>
+                <span class="level-xp">8814593000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 73</span>
+                </div>
+                <span class="level-xp">9437185000</span>
+              </div>
+              <div class="level-item row-bg">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 74</span>
+                </div>
+                <span class="level-xp">10747905000</span>
+              </div>
+              <div class="level-item">
+                <div class="level-info">
+                  <!-- <div class="level-number">55</div> -->
+                  <div class="level-img">
+                    <img src="assets/icons/badge-diamond.png" alt="" />
+                  </div>
+                  <span class="level-label">SVIP 75</span>
+                </div>
+                <span class="level-xp">12058625000</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- silver  gold -->
+        </div>
+      </div>
+    </div>
+
+    <!-- card section -->
     <section class="vip-cards" aria-labelledby="vip-cards__heading">
       <div class="vip-cards__container">
         <h2 id="vip-cards__heading" class="sr-only">VIP Club Benefits</h2>
@@ -94,6 +1711,7 @@
         </article>
       </div>
     </section>
+    <!-- faq section -->
     <section class="faq" aria-labelledby="faq__heading">
       <div class="faq__container">
         <h2 id="faq__heading" class="faq__title">Frequently Asked Questions</h2>
@@ -256,20 +1874,80 @@
                 distributed automatically every Saturday. With the introduction
                 of the BC Sports Club bonuses, our VIP level 22+ players can now
                 enjoy even more rewards and a thrilling sports betting
-                experience! <br> BC Sports Club offers a range of weekend bonuses
-                based on your weekly wager amount in our Sportsbook. <br> . Wager $500
-                or more from Saturday to Friday and receive a $5 Weekend Bonus! <br>
-                . Wager $2,500 or more and receive a $30 Weekend Bonus! <br> . Wager
-                $5,000 or more and receive a $70 Weekend Bonus! <br> . Wager $10,000 or
-                more and receive a $150 Weekend Bonus! <br> These bonuses apply to
-                all markets and odds in our Sportsbook, giving you more
-                opportunities to win big! The weekly wager is calculated from
-                the previous Saturday 00:00hrs to Friday 23:59hrs (UTC).
+                experience! <br />
+                BC Sports Club offers a range of weekend bonuses based on your
+                weekly wager amount in our Sportsbook. <br />
+                . Wager $500 or more from Saturday to Friday and receive a $5
+                Weekend Bonus! <br />
+                . Wager $2,500 or more and receive a $30 Weekend Bonus! <br />
+                . Wager $5,000 or more and receive a $70 Weekend Bonus! <br />
+                . Wager $10,000 or more and receive a $150 Weekend Bonus! <br />
+                These bonuses apply to all markets and odds in our Sportsbook,
+                giving you more opportunities to win big! The weekly wager is
+                calculated from the previous Saturday 00:00hrs to Friday
+                23:59hrs (UTC).
               </p>
             </div>
           </details>
         </div>
       </div>
     </section>
+
+    <script>
+      function openModal() {
+        const modal = document.getElementById("modalOverlay");
+        modal.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal() {
+        const modal = document.getElementById("modalOverlay");
+        modal.classList.remove("active");
+        document.body.style.overflow = "auto";
+      }
+
+      function toggleTier(header) {
+        const tierSection = header.parentElement;
+        const tierLevels = tierSection.querySelector(".tier-levels");
+        const isExpanded = header.classList.contains("expanded");
+
+        // Close all other expanded tiers
+        document
+          .querySelectorAll(".tier-header.expanded")
+          .forEach((expandedHeader) => {
+            if (expandedHeader !== header) {
+              expandedHeader.classList.remove("expanded");
+              expandedHeader.parentElement
+                .querySelector(".tier-levels")
+                .classList.remove("expanded");
+            }
+          });
+
+        // Toggle current tier
+        if (isExpanded) {
+          header.classList.remove("expanded");
+          tierLevels.classList.remove("expanded");
+        } else {
+          header.classList.add("expanded");
+          tierLevels.classList.add("expanded");
+        }
+      }
+
+      // Close modal when clicking outside
+      document
+        .getElementById("modalOverlay")
+        .addEventListener("click", function (e) {
+          if (e.target === this) {
+            closeModal();
+          }
+        });
+
+      // Close modal with Escape key
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeModal();
+        }
+      });
+    </script>
   </body>
 </html>
