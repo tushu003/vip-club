@@ -336,27 +336,27 @@
   /* adjust column widths for mobile */
   .vip-table th:nth-child(1),
   .vip-table td:nth-child(1) {
-    min-width: 100px; /* Smaller Bonus Type column */
-    max-width: 100px;
+    min-width: 120px; /* Smaller Bonus Type column */
+    max-width: 120px;
   }
 
   /* Bronze column sticky positioning */
   .vip-table th:nth-child(2),
   .vip-table td:nth-child(2) {
-    min-width: 70px;
-    max-width: 70px;
+    min-width: 120px;
+    max-width: 120px;
   }
   .vip-table thead th:nth-child(2) {
-    left: 100px; /* width of first column on mobile */
+    left: 120px; /* width of first column on mobile */
   }
   .vip-table td:nth-child(2) {
-    left: 100px; /* width of first column on mobile */
+    left: 120px; /* width of first column on mobile */
   }
 
   /* other tier columns */
   .vip-table th:nth-child(n + 3),
   .vip-table td:nth-child(n + 3) {
-    min-width: 75px;
+    min-width: 120px;
   }
 
   /* compact first column content */
@@ -365,9 +365,9 @@
     gap: 6px;
   }
   .vip-icon {
-    width: 20px;
-    height: 20px;
-    font-size: 12px;
+    width: 28px;
+    height: 28px;
+    font-size: 24px;
     border-radius: 6px;
   }
   .vip-title {
@@ -384,6 +384,64 @@
     padding: 6px 4px;
     font-size: 12px;
   }
+
+  .silver-nav-right {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: var(--nav-bg);   /* uses variable */
+  border-radius: 4px;       
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  box-shadow: 0 2px 4px var(--shadow-nav);
+  margin-left: 100px; /* space from left arrow */
+  margin-top: -5px;
+}
+
+.silver-nav-right::after {
+  content: ">";
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--nav-text);   /* arrow color variable */
+}
+
+.silver-nav-right:hover {
+  background-color: var(--nav-bg-hover); 
+  color: var(--nav-text-hover);
+  box-shadow: 0 2px 6px var(--shadow-nav-hover);
+}
+
+.silver-nav-left {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: var(--nav-bg);   /* uses variable */
+  border-radius: 4px;       
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  box-shadow: 0 2px 4px var(--shadow-nav);
+  margin-left: 85px; /* space from left arrow */
+  margin-top: -5px;
+}
+
+.silver-nav-left::after {
+  content: "<";
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--nav-text);   /* arrow color variable */
+}
+
+.silver-nav-left:hover {
+  background-color: var(--nav-bg-hover); 
+  color: var(--nav-text-hover);
+  box-shadow: 0 2px 6px var(--shadow-nav-hover);
+}
+
+
 
   /* Bonus Type header */
   /* .bonus-type {
@@ -424,31 +482,31 @@
   /* tighter column widths for tiny phones */
   .vip-table th:nth-child(1),
   .vip-table td:nth-child(1) {
-    min-width: 90px; /* Even smaller Bonus Type column */
-    max-width: 90px;
+    min-width: 120px; /* Even smaller Bonus Type column */
+    max-width: 120px;
   }
 
   .vip-table th:nth-child(2),
   .vip-table td:nth-child(2) {
-    min-width: 85px;
-    max-width: 60px;
+    min-width: 100px;
+    max-width: 100px;
   }
   .vip-table thead th:nth-child(2) {
-    left: 90px;
+    left: 120px;
   }
   .vip-table td:nth-child(2) {
-    left: 90px;
+    left: 120px;
   }
 
   .vip-table th:nth-child(n + 3),
   .vip-table td:nth-child(n + 3) {
-    min-width: 80px;
+    min-width: 100px;
   }
 
   .vip-icon {
-    width: 18px;
-    height: 18px;
-    font-size: 10px;
+    width: 24px;
+    height: 24px;
+    font-size: 18px;
   }
   .vip-title {
     font-size: 10px;
@@ -475,6 +533,64 @@
   .silver-nav-right {
     left: 240px; /* Adjusted for smaller columns */
   }
+
+  .silver-nav-right {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  background-color: var(--nav-bg);   /* uses variable */
+  border-radius: 4px;       
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  box-shadow: 0 2px 4px var(--shadow-nav);
+  margin-left: 50px; /* space from left arrow */
+  margin-top: 2px;
+}
+
+.silver-nav-right::after {
+  content: ">";
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--nav-text);   /* arrow color variable */
+}
+
+.silver-nav-right:hover {
+  background-color: var(--nav-bg-hover); 
+  color: var(--nav-text-hover);
+  box-shadow: 0 2px 6px var(--shadow-nav-hover);
+}
+
+.silver-nav-left {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  /* background-color: var(--nav-bg);   */
+  border-radius: 4px;       
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  box-shadow: 0 2px 4px var(--shadow-nav);
+  margin-left: 55px; /* space from left arrow */
+  margin-top: 2px;
+}
+
+.silver-nav-left::after {
+  content: "<";
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--nav-text);   /* arrow color variable */
+}
+
+.silver-nav-left:hover {
+  background-color: var(--nav-bg-hover); 
+  color: var(--nav-text-hover);
+  box-shadow: 0 2px 6px var(--shadow-nav-hover);
+}
+
+  
 
   /* Bonus Type header */
   /* .bonus-type {
